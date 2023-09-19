@@ -50,5 +50,18 @@ export const useAuth = () => {
       })
     );
   };
-  return { register, login, logout };
+
+  const reset = () => {
+    const todos = JSON.parse(localStorage.getItem('todos') || '[]');
+
+    localStorage.setItem(
+      'todos',
+      JSON.stringify(todos.filter((todo) => !todo.isSecret))
+    );
+    // setAuth(null);
+    localStorage.removeItem('auth');
+    window.location.reload();
+  };
+
+  return { register, login, logout, reset };
 };

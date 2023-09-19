@@ -11,7 +11,7 @@ import {
 } from '../styles/Header.style';
 
 const Header = () => {
-  const { login, logout, register } = useAuth();
+  const { login, logout, register, reset } = useAuth();
 
   const authState = useAuthStore((state) => state.auth.authState);
   const [isInputMode, setIsInputMode] = useState(false);
@@ -66,6 +66,9 @@ const Header = () => {
         >
           {ButtonSelector[authState].src}
         </AuthButton>
+      )}
+      {authState !== authStates.NOT_REGISTERED && (
+        <AuthButton onClick={reset}>초기화</AuthButton>
       )}
     </HeaderContainer>
   );
