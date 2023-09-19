@@ -1,4 +1,7 @@
 import styled from "styled-components";
+import TodoCountBtn from "../components/TodoCountBtn";
+import { useState } from "react";
+import { headerBtnState } from "../state/headerBtnState";
 
 export default function Todo() {
   return (
@@ -7,7 +10,15 @@ export default function Todo() {
         <HeaderTitle>
           <span>TO-DO LIST</span>
         </HeaderTitle>
-        <HeaderBtnWrapper>Button</HeaderBtnWrapper>
+        <HeaderBtnWrapper>
+          {headerBtnState.map((btnState) => (
+            <TodoCountBtn
+              key={btnState.text}
+              btnState={btnState}
+              addClass="margin:0 2rem;"
+            />
+          ))}
+        </HeaderBtnWrapper>
       </TodoHeader>
       <TodoMainBoard>
         <AddTodoWrapper>
