@@ -1,8 +1,11 @@
+import { Route, Routes } from "react-router-dom";
+import Todo from "./pages/Todo";
+
 function App() {
   return (
-    <div>
-      <h1>18기 프론트 화이팅~ 푸하항ㅋ</h1>
-    </div>
+    <Routes>
+      <Route path="/" element={<Todo />} />
+    </Routes>
   );
 }
 
