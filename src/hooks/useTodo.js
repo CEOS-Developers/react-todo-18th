@@ -20,7 +20,10 @@ export const useTodo = () => {
   };
 
   const addTodo = (todo) => {
+    if (!todo.content) return;
+
     todo.id = idx++;
+    todo.isDone = false;
     const newTodos = [...todos];
 
     let i = 0;
