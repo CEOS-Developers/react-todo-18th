@@ -28,6 +28,8 @@ const TodoListElement = ({
           handleCloseButton={() => {
             setIsDetailModalOpen(false);
           }}
+          handleClickDeleteButton={handleClickDeleteButton}
+          handleClickDoneButton={handleClickDoneButton}
         />
       )}
       <TodoListElementContainer
