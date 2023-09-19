@@ -11,6 +11,24 @@ const TODOS = JSON.parse(localStorage.getItem('todos') || '[]').map(
 
 let idx = TODOS.length;
 
+const pushTodo = (todos, newTodo) => {
+  if (newTodo.isDone) {
+    todos.push(newTodo);
+  } else {
+    newTodo.id = idx++;
+    newTodo.isDone = false;
+    let i = 0;
+    for (; i < todos.length; i++) {
+      if (todos[i].isDone) break; // 완료한 todo보다 무조건 앞에 위치
+      if (todos[i].priority < newTodo.priority) break;
+      else if (todos[i].priority === newTodo.priority) {
+        if (todos[i].fromDate >= newTodo.fromDate) break; // 시작일이 빠른 todo가 더 낲에 위치
+      }
+    }
+    todos.splice(i, 0, newTodo);
+  }
+};
+
 export const useTodo = () => {
   const [todos, setTodos] = useState(TODOS);
 
@@ -21,20 +39,8 @@ export const useTodo = () => {
 
   const addTodo = (todo) => {
     if (!todo.content) return;
-
-    todo.id = idx++;
-    todo.isDone = false;
     const newTodos = [...todos];
-
-    let i = 0;
-    for (; i < newTodos.length; i++) {
-      if (newTodos[i].isDone) break; // 완료한 todo보다 무조건 앞에 위치
-      if (newTodos[i].priority < todo.priority) break;
-      else if (newTodos[i].priority === todo.priority) {
-        if (newTodos[i].fromDate >= todo.fromDate) break; // 시작일이 빠른 todo가 더 낲에 위치
-      }
-    }
-    newTodos.splice(i, 0, todo);
+    pushTodo(newTodos, todo);
 
     saveChanges(newTodos);
   };
@@ -48,12 +54,17 @@ export const useTodo = () => {
   const changeTodoState = (id) => {
     const newTodos = [...todos];
 
-    newTodos.forEach((todo) => {
+    let changed = -1;
+    newTodos.forEach((todo, idx) => {
       if (todo.id === id) {
         todo.isDone = !todo.isDone;
+        changed = idx;
         return;
       }
     });
+
+    const changedTodo = newTodos.splice(changed, 1)[0];
+    pushTodo(newTodos, changedTodo);
 
     saveChanges(newTodos);
   };
