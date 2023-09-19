@@ -13,13 +13,13 @@ const PRIORITY = {
   low: 1,
 };
 
-const TodoInput = () => {
+const TodoInput = ({ addTodo }) => {
   const {
     content,
     priority,
     fromDate,
     toDate,
-    // todo,
+    todo,
     toDateRef,
     onChangeContent,
     onClickPriority,
@@ -47,6 +47,7 @@ const TodoInput = () => {
       <DateInput value={toDate} onChange={onChangeToDate} ref={toDateRef} />
       <AddButton
         onClick={() => {
+          addTodo(todo);
           resetValue();
         }}
       >
