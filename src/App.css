@@ -4,6 +4,10 @@
     font-weight: normal;
     font-style: normal;
 }
+:root{
+    --card-color: #ECECEC;
+    --bg-color: black;
+}
 .header{
     display: flex;
     height: 150px;
@@ -34,16 +38,16 @@
     padding-bottom: 5px;
 }
 input{/*input 태그 따로 설정*/
-    background-color: black;
-    color: #ECECEC;
-    border: solid 2px #ECECEC;
+    background-color: var(--bg-color);
+    color: var(--card-color);
+    border: solid 2px var(--card-color);
     border-radius: 6px;
     width: 400px;
 }
 #plusButton{
-    background-color: black;
-    color: #ECECEC;
-    border: solid 2px #ECECEC;
+    background-color: var(--bg-color);
+    color: var(--card-color);
+    border: solid 2px var(--card-color);
     border-radius: 6px;
     width: 35px;
     margin-left: 5px;
@@ -54,8 +58,8 @@ input{/*input 태그 따로 설정*/
     color : #5f5f5f;
 }
 .todoCard{
-    background-color: #ECECEC;
-    color : black;
+    background-color: var(--card-color);
+    color : var(--bg-color);
     display:flex; /*todoElem 세로축 가운데 정렬*/
     align-items:center;
     justify-content:space-between;/* item 사이 간격 균일하게 */
