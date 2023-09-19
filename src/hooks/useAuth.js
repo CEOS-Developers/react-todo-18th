@@ -35,7 +35,6 @@ export const useAuth = () => {
       });
       return true;
     }
-    console.log(password, payload);
     return false;
   };
 

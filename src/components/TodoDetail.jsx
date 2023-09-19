@@ -32,7 +32,14 @@ const TodoDetail = ({
         </DetailInfoDiv>
         <DetailBodyDiv>{body}</DetailBodyDiv>
         <DetailButtonsOuter>
-          <DetailButton onClick={handleClickDoneButton}>✓</DetailButton>
+          <DetailButton
+            onClick={() => {
+              handleClickDoneButton();
+              handleCloseButton();
+            }}
+          >
+            ✓
+          </DetailButton>
           <DetailButton onClick={handleClickDeleteButton}>-</DetailButton>
         </DetailButtonsOuter>
       </TodoDetailInner>

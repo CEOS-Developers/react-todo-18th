@@ -53,8 +53,13 @@ const TodoListElement = ({
             {body && <ClickFlagDiv className="">...</ClickFlagDiv>}
             <DateDiv>{convertDate(todo.fromDate)}</DateDiv>
             <span>-</span>
-            <DateDiv>{convertDate(todo.fromDate)}</DateDiv>
-            <DoneButton onClick={handleClickDoneButton}>
+            <DateDiv>{convertDate(todo.toDate)}</DateDiv>
+            <DoneButton
+              onClick={(e) => {
+                handleClickDoneButton();
+                e.stopPropagation();
+              }}
+            >
               {todo.isDone ? '↪' : '✓'}
             </DoneButton>
             <DeleteButton onClick={handleClickDeleteButton}>-</DeleteButton>

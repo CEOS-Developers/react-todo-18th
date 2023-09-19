@@ -38,7 +38,7 @@ export const ContentDiv = styled.div`
 `;
 
 export const ClickFlagDiv = styled.div`
-  border: 1px solid black;
+  border: 1px solid;
   background: whiteSmoke;
   box-sizing: border-box;
   height: 15px;

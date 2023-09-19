@@ -20,15 +20,15 @@ const Header = () => {
   const ButtonSelector = {};
   ButtonSelector[authStates.AUTHORIZED] = {
     clickHandler: logout,
-    src: '로그아웃',
+    src: '잠금',
   };
   ButtonSelector[authStates.UNAUTHORIZED] = {
     clickHandler: login,
-    src: '로그인',
+    src: '잠금 해제',
   };
   ButtonSelector[authStates.NOT_REGISTERED] = {
     clickHandler: register,
-    src: '가입',
+    src: '비밀번호 설정',
   };
 
   return (

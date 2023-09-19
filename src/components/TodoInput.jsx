@@ -10,6 +10,7 @@ import {
 import { useTodoInput } from '../hooks/useTodoInput';
 
 import { authStates, useAuthStore } from '../stores/useAuthStore';
+import { useRef } from 'react';
 
 const PRIORITY = {
   high: 3,
@@ -35,10 +36,12 @@ const TodoInput = ({ addTodo }) => {
   } = useTodoInput();
 
   const authState = useAuthStore((state) => state.auth.authState);
+  const contentRef = useRef();
 
   return (
     <TodoInputContainer $authState={authState}>
       <ContentTextArea
+        ref={contentRef}
         onChange={onChangeContent}
         value={content}
       ></ContentTextArea>
@@ -52,7 +55,8 @@ const TodoInput = ({ addTodo }) => {
                 name="priority"
                 value={value}
                 onClick={onClickPriority}
-                defaultChecked={value === priority}
+                checked={value === priority}
+                readOnly
               />
               <label htmlFor={key}>{key}</label>
             </PriorityOuterDiv>
@@ -74,6 +78,7 @@ const TodoInput = ({ addTodo }) => {
         onClick={() => {
           addTodo(todo);
           resetValue();
+          contentRef.current.style.height = 'auto';
         }}
       >
         +
