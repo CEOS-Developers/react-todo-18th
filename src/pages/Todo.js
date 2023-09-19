@@ -2,8 +2,19 @@ import styled from "styled-components";
 import TodoCountBtn from "../components/TodoCountBtn";
 import { useState } from "react";
 import { headerBtnState } from "../state/headerBtnState";
+import EachTodo from "../components/EachTodo";
 
 export default function Todo() {
+  const todoList = [
+    {
+      todoText: "영화보기",
+      checked: true,
+    },
+    {
+      todoText: "공부하기",
+      checked: false,
+    },
+  ];
   return (
     <TodoWrapper>
       <TodoHeader>
@@ -15,7 +26,7 @@ export default function Todo() {
             <TodoCountBtn
               key={btnState.text}
               btnState={btnState}
-              addClass="margin:0 2rem;"
+              addClass="margin:0 1.5rem;"
             />
           ))}
         </HeaderBtnWrapper>
@@ -27,7 +38,11 @@ export default function Todo() {
             <span>+</span>
           </AddTodoBtn>
         </AddTodoWrapper>
-        <TodoListWrapper>Todo 리스트</TodoListWrapper>
+        <TodoListWrapper>
+          {todoList.map((todo, index) => (
+            <EachTodo key={todo.todoText + index} todo={todo} />
+          ))}
+        </TodoListWrapper>
       </TodoMainBoard>
     </TodoWrapper>
   );
