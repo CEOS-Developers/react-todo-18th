@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-export const TodoInputContainer = styled.div``;
+export const TodoInputContainer = styled.div`
+  height: 40px;
+  display: flex;
+  align-items: center;
+`;
 
 export const ContentInput = styled.input``;
 

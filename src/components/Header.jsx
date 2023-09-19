@@ -34,42 +34,44 @@ const Header = () => {
   return (
     <HeaderContainer>
       <TitleH1>나의 할 일</TitleH1>
-      {isInputMode ? (
-        <PasswordOuter>
-          <PasswordInput
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
-          />
-          <PasswordButton
+      <div className="authBtns">
+        {isInputMode ? (
+          <PasswordOuter>
+            <PasswordInput
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+            />
+            <PasswordButton
+              onClick={() => {
+                ButtonSelector[authState].clickHandler(password);
+                setIsInputMode(false);
+              }}
+            >
+              ✓
+            </PasswordButton>
+            <PasswordButton
+              onClick={() => {
+                setIsInputMode(false);
+              }}
+            >
+              X
+            </PasswordButton>
+          </PasswordOuter>
+        ) : (
+          <AuthButton
             onClick={() => {
-              ButtonSelector[authState].clickHandler(password);
-              setIsInputMode(false);
+              if (authState === authStates.AUTHORIZED) logout();
+              else setIsInputMode(true);
             }}
           >
-            확인
-          </PasswordButton>
-          <PasswordButton
-            onClick={() => {
-              setIsInputMode(false);
-            }}
-          >
-            취소
-          </PasswordButton>
-        </PasswordOuter>
-      ) : (
-        <AuthButton
-          onClick={() => {
-            if (authState === authStates.AUTHORIZED) logout();
-            else setIsInputMode(true);
-          }}
-        >
-          {ButtonSelector[authState].src}
-        </AuthButton>
-      )}
-      {authState !== authStates.NOT_REGISTERED && (
-        <AuthButton onClick={reset}>초기화</AuthButton>
-      )}
+            {ButtonSelector[authState].src}
+          </AuthButton>
+        )}
+        {authState !== authStates.NOT_REGISTERED && (
+          <AuthButton onClick={reset}>초기화</AuthButton>
+        )}
+      </div>
     </HeaderContainer>
   );
 };

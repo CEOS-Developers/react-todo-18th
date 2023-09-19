@@ -11,6 +11,12 @@ import { convertDate } from '../utils/common';
 import TodoDetail from './TodoDetail';
 import { authStates, useAuthStore } from '../stores/useAuthStore';
 
+const PRIORITY = {
+  1: 'low',
+  2: 'mid',
+  3: 'high',
+};
+
 const TodoListElement = ({
   todo,
   handleClickDeleteButton,
@@ -44,7 +50,13 @@ const TodoListElement = ({
           <SecretDiv>비밀글입니다.</SecretDiv>
         ) : (
           <>
-            <ContentDiv>{title}</ContentDiv>
+            <ContentDiv
+              className={`${PRIORITY[todo.priority]} ${
+                todo.isDone ? 'done' : ''
+              }`}
+            >
+              {title}
+            </ContentDiv>
             <DateDiv>{convertDate(todo.fromDate)}</DateDiv>
             <span>-</span>
             <DateDiv>{convertDate(todo.fromDate)}</DateDiv>
