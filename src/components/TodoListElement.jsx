@@ -3,11 +3,13 @@ import {
   TodoListElementContainer,
   ContentDiv,
   DateDiv,
+  SecretDiv,
   DoneButton,
   DeleteButton,
 } from '../styles/TodoListElement.style';
 import { convertDate } from '../utils/common';
 import TodoDetail from './TodoDetail';
+import { authStates, useAuthStore } from '../stores/useAuthStore';
 
 const TodoListElement = ({
   todo,
@@ -17,6 +19,7 @@ const TodoListElement = ({
   let [title, ...body] = todo.content.split('\n\n');
   const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
   body = body.join('');
+  const authState = useAuthStore((state) => state.auth.authState);
 
   return (
     <>
@@ -37,14 +40,20 @@ const TodoListElement = ({
           setIsDetailModalOpen(true);
         }}
       >
-        <ContentDiv>{title}</ContentDiv>
-        <DateDiv>{convertDate(todo.fromDate)}</DateDiv>
-        <span>-</span>
-        <DateDiv>{convertDate(todo.fromDate)}</DateDiv>
-        <DoneButton onClick={handleClickDoneButton}>
-          {todo.isDone ? '↪' : '✓'}
-        </DoneButton>
-        <DeleteButton onClick={handleClickDeleteButton}>-</DeleteButton>
+        {todo.isSecret && authState !== authStates.AUTHORIZED ? (
+          <SecretDiv>비밀글입니다.</SecretDiv>
+        ) : (
+          <>
+            <ContentDiv>{title}</ContentDiv>
+            <DateDiv>{convertDate(todo.fromDate)}</DateDiv>
+            <span>-</span>
+            <DateDiv>{convertDate(todo.fromDate)}</DateDiv>
+            <DoneButton onClick={handleClickDoneButton}>
+              {todo.isDone ? '↪' : '✓'}
+            </DoneButton>
+            <DeleteButton onClick={handleClickDeleteButton}>-</DeleteButton>
+          </>
+        )}
       </TodoListElementContainer>
     </>
   );

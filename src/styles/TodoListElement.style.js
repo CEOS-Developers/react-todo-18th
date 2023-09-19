@@ -9,3 +9,5 @@ export const DateDiv = styled.div``;
 export const DoneButton = styled.button``;
 
 export const DeleteButton = styled.button``;
+
+export const SecretDiv = styled.div``;

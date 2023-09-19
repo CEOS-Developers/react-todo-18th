@@ -16,4 +16,6 @@ export const PriorityInput = styled.input.attrs({ type: 'radio' })``;
 
 export const DateInput = styled.input.attrs({ type: 'date' })``;
 
+export const SecretInput = styled.input.attrs({ type: 'checkbox' })``;
+
 export const AddButton = styled.button``;

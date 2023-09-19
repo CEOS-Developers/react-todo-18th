@@ -5,6 +5,7 @@ export const useTodoInput = () => {
   const [priority, setPriority] = useState(3);
   const [fromDate, setFromDate] = useState('');
   const [toDate, setToDate] = useState('');
+  const [isSecret, setIsSecret] = useState(false);
 
   const toDateRef = useRef();
 
@@ -13,6 +14,7 @@ export const useTodoInput = () => {
     priority,
     fromDate: fromDate ? new Date(fromDate) : new Date(),
     toDate: toDate ? new Date(toDate) : new Date(),
+    isSecret,
   };
 
   const onChangeContent = (e) => {
@@ -35,11 +37,16 @@ export const useTodoInput = () => {
     setToDate(e.target.value);
   };
 
+  const onChangeSecret = (e) => {
+    setIsSecret(e.target.checked);
+  };
+
   const resetValue = () => {
     setContent('');
     setPriority(3);
     setFromDate('');
     setToDate('');
+    setIsSecret(false);
   };
 
   return {
@@ -48,11 +55,13 @@ export const useTodoInput = () => {
     fromDate,
     toDate,
     todo,
+    isSecret,
     toDateRef,
     onChangeContent,
     onClickPriority,
     onChangeFromDate,
     onChangeToDate,
+    onChangeSecret,
     resetValue,
   };
 };
