@@ -2,20 +2,15 @@ import { useState } from 'react';
 import {
   TodoListElementContainer,
   ContentDiv,
+  ClickFlagDiv,
   DateDiv,
   SecretDiv,
   DoneButton,
   DeleteButton,
 } from '../styles/TodoListElement.style';
-import { convertDate } from '../utils/common';
+import { convertDate, convertPriority } from '../utils/common';
 import TodoDetail from './TodoDetail';
 import { authStates, useAuthStore } from '../stores/useAuthStore';
-
-const PRIORITY = {
-  1: 'low',
-  2: 'mid',
-  3: 'high',
-};
 
 const TodoListElement = ({
   todo,
@@ -50,11 +45,12 @@ const TodoListElement = ({
           <SecretDiv>비밀글입니다.</SecretDiv>
         ) : (
           <div
-            className={`infoOuter ${PRIORITY[todo.priority]} ${
+            className={`infoOuter ${convertPriority(todo.priority)} ${
               todo.isDone ? 'done' : ''
             }`}
           >
             <ContentDiv>{title}</ContentDiv>
+            {body && <ClickFlagDiv className="">...</ClickFlagDiv>}
             <DateDiv>{convertDate(todo.fromDate)}</DateDiv>
             <span>-</span>
             <DateDiv>{convertDate(todo.fromDate)}</DateDiv>

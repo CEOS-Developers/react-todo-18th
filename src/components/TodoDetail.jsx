@@ -8,7 +8,7 @@ import {
   DetailButtonsOuter,
   DetailButton,
 } from '../styles/TodoDetail.style';
-import { convertDate } from '../utils/common';
+import { convertDate, convertPriority } from '../utils/common';
 
 const TodoDetail = ({
   title,
@@ -24,14 +24,16 @@ const TodoDetail = ({
         <DetailCloseButton onClick={handleCloseButton}>X</DetailCloseButton>
         <DetailTitleDiv>{title}</DetailTitleDiv>
         <DetailInfoDiv>
-          <div className="">{convertDate(todo.fromDate)}</div>
-          <div className="">{convertDate(todo.toDate)}</div>
-          <div className="">{todo.priority}</div>
+          <div className="info date">{convertDate(todo.fromDate)}</div>
+          <div className="info betweenDate">-</div>
+          <div className="info date toDate">{convertDate(todo.toDate)}</div>
+          <div className="info">중요도: </div>
+          <div className="priority">{convertPriority(todo.priority)}</div>
         </DetailInfoDiv>
         <DetailBodyDiv>{body}</DetailBodyDiv>
         <DetailButtonsOuter>
-          <DetailButton onClick={handleClickDeleteButton}>삭제</DetailButton>
-          <DetailButton onClick={handleClickDoneButton}>완료</DetailButton>
+          <DetailButton onClick={handleClickDoneButton}>✓</DetailButton>
+          <DetailButton onClick={handleClickDeleteButton}>-</DetailButton>
         </DetailButtonsOuter>
       </TodoDetailInner>
     </TodoDetailContainer>

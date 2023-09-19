@@ -37,6 +37,19 @@ export const ContentDiv = styled.div`
   margin-right: 10px;
 `;
 
+export const ClickFlagDiv = styled.div`
+  border: 1px solid black;
+  background: whiteSmoke;
+  box-sizing: border-box;
+  height: 15px;
+  padding: 0 2px;
+  min-width: 22px;
+  text-align: center;
+  line-height: 3px;
+  border-radius: 10px;
+  margin-right: 5px;
+`;
+
 export const DateDiv = styled.div`
   margin: 0 5px;
   font-size: 12px;
