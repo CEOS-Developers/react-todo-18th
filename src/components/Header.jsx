@@ -68,7 +68,7 @@ const Header = () => {
             {ButtonSelector[authState].src}
           </AuthButton>
         )}
-        {authState !== authStates.NOT_REGISTERED && (
+        {!isInputMode && authState !== authStates.NOT_REGISTERED && (
           <AuthButton onClick={reset}>초기화</AuthButton>
         )}
       </div>

@@ -49,14 +49,12 @@ const TodoListElement = ({
         {todo.isSecret && authState !== authStates.AUTHORIZED ? (
           <SecretDiv>비밀글입니다.</SecretDiv>
         ) : (
-          <>
-            <ContentDiv
-              className={`${PRIORITY[todo.priority]} ${
-                todo.isDone ? 'done' : ''
-              }`}
-            >
-              {title}
-            </ContentDiv>
+          <div
+            className={`infoOuter ${PRIORITY[todo.priority]} ${
+              todo.isDone ? 'done' : ''
+            }`}
+          >
+            <ContentDiv>{title}</ContentDiv>
             <DateDiv>{convertDate(todo.fromDate)}</DateDiv>
             <span>-</span>
             <DateDiv>{convertDate(todo.fromDate)}</DateDiv>
@@ -64,7 +62,7 @@ const TodoListElement = ({
               {todo.isDone ? '↪' : '✓'}
             </DoneButton>
             <DeleteButton onClick={handleClickDeleteButton}>-</DeleteButton>
-          </>
+          </div>
         )}
       </TodoListElementContainer>
     </>

@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
 export const HeaderContainer = styled.div`
-  margin: 10px 0;
+  margin: 10px 0 20px 0;
   display: flex;
+
   justify-content: center;
   position: relative;
   width: 100%;
@@ -12,6 +13,9 @@ export const HeaderContainer = styled.div`
     display: flex;
     top: 0;
     right: 0;
+  }
+  @media screen and (max-width: 550px) {
+    justify-content: left;
   }
 `;
 
@@ -27,6 +31,7 @@ export const PasswordOuter = styled.div`
 export const PasswordInput = styled.input.attrs({
   type: 'password',
 })`
+  width: 100px;
   margin-right: 5px;
   border: none;
   border-bottom: 1px solid grey;

@@ -1,5 +1,6 @@
 import {
   TodoDetailContainer,
+  TodoDetailInner,
   DetailCloseButton,
   DetailTitleDiv,
   DetailInfoDiv,
@@ -19,18 +20,20 @@ const TodoDetail = ({
 }) => {
   return (
     <TodoDetailContainer>
-      <DetailCloseButton onClick={handleCloseButton}>X</DetailCloseButton>
-      <DetailTitleDiv>{title}</DetailTitleDiv>
-      <DetailInfoDiv>
-        <div className="">{convertDate(todo.fromDate)}</div>
-        <div className="">{convertDate(todo.toDate)}</div>
-        <div className="">{todo.priority}</div>
-      </DetailInfoDiv>
-      <DetailBodyDiv>{body}</DetailBodyDiv>
-      <DetailButtonsOuter>
-        <DetailButton onClick={handleClickDeleteButton}>삭제</DetailButton>
-        <DetailButton onClick={handleClickDoneButton}>완료</DetailButton>
-      </DetailButtonsOuter>
+      <TodoDetailInner>
+        <DetailCloseButton onClick={handleCloseButton}>X</DetailCloseButton>
+        <DetailTitleDiv>{title}</DetailTitleDiv>
+        <DetailInfoDiv>
+          <div className="">{convertDate(todo.fromDate)}</div>
+          <div className="">{convertDate(todo.toDate)}</div>
+          <div className="">{todo.priority}</div>
+        </DetailInfoDiv>
+        <DetailBodyDiv>{body}</DetailBodyDiv>
+        <DetailButtonsOuter>
+          <DetailButton onClick={handleClickDeleteButton}>삭제</DetailButton>
+          <DetailButton onClick={handleClickDoneButton}>완료</DetailButton>
+        </DetailButtonsOuter>
+      </TodoDetailInner>
     </TodoDetailContainer>
   );
 };

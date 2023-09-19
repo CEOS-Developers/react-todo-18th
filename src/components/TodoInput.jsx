@@ -1,7 +1,8 @@
 import {
   AddButton,
   DateInput,
-  PriorityInput,
+  PriorityOuterDiv,
+  // PriorityInput,
   SecretInput,
   ContentTextArea,
   TodoInputContainer,
@@ -36,26 +37,39 @@ const TodoInput = ({ addTodo }) => {
   const authState = useAuthStore((state) => state.auth.authState);
 
   return (
-    <TodoInputContainer>
+    <TodoInputContainer $authState={authState}>
       <ContentTextArea
         onChange={onChangeContent}
         value={content}
       ></ContentTextArea>
-      {Object.entries(PRIORITY).map(([key, value]) => (
-        <PriorityInput
-          key={key}
-          name="priority"
-          value={value}
-          onClick={onClickPriority}
-          defaultChecked={value === priority}
-        />
-      ))}
+      <div className="options">
+        <div className="option priority">
+          {Object.entries(PRIORITY).map(([key, value]) => (
+            <PriorityOuterDiv key={key}>
+              <input
+                id={key}
+                type="radio"
+                name="priority"
+                value={value}
+                onClick={onClickPriority}
+                defaultChecked={value === priority}
+              />
+              <label htmlFor={key}>{key}</label>
+            </PriorityOuterDiv>
+          ))}
+        </div>
+        <div className="option date">
+          <DateInput value={fromDate} onChange={onChangeFromDate} />
+          <DateInput value={toDate} onChange={onChangeToDate} ref={toDateRef} />
+        </div>
 
-      <DateInput value={fromDate} onChange={onChangeFromDate} />
-      <DateInput value={toDate} onChange={onChangeToDate} ref={toDateRef} />
-      {authState === authStates.AUTHORIZED && (
-        <SecretInput checked={isSecret} onChange={onChangeSecret} />
-      )}
+        {authState === authStates.AUTHORIZED && (
+          <div className="option secret">
+            <SecretInput checked={isSecret} onChange={onChangeSecret} />
+            <div>비밀</div>
+          </div>
+        )}
+      </div>
       <AddButton
         onClick={() => {
           addTodo(todo);

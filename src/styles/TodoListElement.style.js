@@ -1,13 +1,15 @@
 import styled from 'styled-components';
 
 export const TodoListElementContainer = styled.li`
-  //   width: 100%;
-  display: flex;
-  align-items: center;
   padding-bottom: 10px;
   margin-bottom: 10px;
   border-bottom: 1px solid rgb(216, 216, 216);
   color: rgb(112, 112, 112);
+
+  .infoOuter {
+    display: flex;
+    align-items: center;
+  }
   .high {
     color: black;
     font-family: 'SUITE-SemiBold';
@@ -31,10 +33,13 @@ export const TodoListElementContainer = styled.li`
 
 export const ContentDiv = styled.div`
   flex-grow: 2;
+  word-break: break-all;
+  margin-right: 10px;
 `;
 
 export const DateDiv = styled.div`
   margin: 0 5px;
+  font-size: 12px;
 `;
 
 export const DoneButton = styled.button`
