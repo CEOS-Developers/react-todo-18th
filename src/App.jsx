@@ -1,14 +1,15 @@
+import Header from './components/Header';
 import TodoInput from './components/TodoInput';
 import TodoListElement from './components/TodoListElement';
 import { useTodo } from './hooks/useTodo';
-import { AppContainer, TitleH1, TodoListUl } from './styles/App.style';
+import { AppContainer, TodoListUl } from './styles/App.style';
 
 function App() {
   const { todos, addTodo, deleteTodo, changeTodoState } = useTodo();
 
   return (
     <AppContainer>
-      <TitleH1>나의 할 일</TitleH1>
+      <Header />
       <TodoInput addTodo={addTodo} />
       <TodoListUl>
         {todos.map((todo) => (

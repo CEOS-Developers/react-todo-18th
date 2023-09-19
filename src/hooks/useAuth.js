@@ -1,6 +1,6 @@
 import { useAuthStore } from '../stores/useAuthStore';
 
-const DURATION = 10 * 60 * 1000; // 10분간 로그인 유지
+const DURATION = 5 * 60 * 1000; // 5분간 로그인 유지
 
 export const useAuth = () => {
   const password = useAuthStore((state) => state.auth.password);
@@ -35,6 +35,7 @@ export const useAuth = () => {
       });
       return true;
     }
+    console.log(password, payload);
     return false;
   };
 
