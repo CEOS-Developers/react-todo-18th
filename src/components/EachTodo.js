@@ -1,9 +1,26 @@
+import { useState } from "react";
 import styled from "styled-components";
+import { setTodo } from "../hooks/setTodo";
 
-export default function EachTodo({ todo }) {
+export default function EachTodo({ index, todo, todoLists, setTodoLists }) {
+  const [checkState, setCheckState] = useState(todo.checked);
+  const checkboxChanged = (e) => {
+    const updatedTodoLists = [...todoLists];
+    updatedTodoLists[index] = {
+      ...updatedTodoLists[index],
+      checked: !updatedTodoLists[index].checked,
+    };
+    setTodoLists(updatedTodoLists);
+    setTodo(updatedTodoLists);
+    setCheckState((prev) => !prev);
+  };
   return (
     <EachTodoWrapper>
-      <CheckBox type="checkbox" checked={todo.checked ? true : false} />
+      <CheckBox
+        type="checkbox"
+        checked={checkState}
+        onChange={checkboxChanged}
+      />
       <TodoText $checked={todo.checked}>
         <span>{todo.todoText}</span>
       </TodoText>

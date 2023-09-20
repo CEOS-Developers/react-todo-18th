@@ -1,3 +1,3 @@
 export const getTodo = () => {
-  return localStorage.getItem("todoList") | [];
+  return JSON.parse(localStorage.getItem("todoList")) || [];
 };

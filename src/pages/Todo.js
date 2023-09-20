@@ -1,16 +1,32 @@
 import styled from "styled-components";
 import TodoCountBtn from "../components/TodoCountBtn";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { headerBtnState } from "../state/headerBtnState";
 import EachTodo from "../components/EachTodo";
 import { getTodo } from "../hooks/getTodo";
+import { setTodo } from "../hooks/setTodo";
 
 export default function Todo() {
-  const [todoValue, setTodoValue] = useState("");
-  const todoLists = getTodo();
+  const [todoText, setTodoText] = useState("");
+  const [todoLists, setTodoLists] = useState(getTodo());
   const todoInputChanged = (e) => {
-    setTodoValue(e.target.value);
+    setTodoText(e.target.value);
   };
+  const addTodoClicked = () => {
+    if (todoText.trim() === "") {
+      alert("todo를 입력하세요");
+      setTodoText("");
+      return;
+    }
+    setTodoLists((prev) => [
+      ...prev,
+      { todoText: todoText.trim(), checked: false },
+    ]);
+    setTodoText("");
+  };
+  useEffect(() => {
+    setTodo(todoLists);
+  }, [todoLists]);
   return (
     <TodoWrapper>
       <TodoHeader>
@@ -31,16 +47,22 @@ export default function Todo() {
         <AddTodoWrapper>
           <AddTodoInput
             placeholder="입력하세요"
-            value={todoValue}
+            value={todoText}
             onChange={todoInputChanged}
           />
-          <AddTodoBtn>
+          <AddTodoBtn onClick={addTodoClicked}>
             <span>+</span>
           </AddTodoBtn>
         </AddTodoWrapper>
         <TodoListWrapper>
-          {todoList.map((todo, index) => (
-            <EachTodo key={todo.todoText + index} todo={todo} />
+          {todoLists.map((todo, index) => (
+            <EachTodo
+              key={todo.todoText + index}
+              index={index}
+              todo={todo}
+              todoLists={todoLists}
+              setTodoLists={setTodoLists}
+            />
           ))}
         </TodoListWrapper>
       </TodoMainBoard>
