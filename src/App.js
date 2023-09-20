@@ -9,8 +9,7 @@ function App() {
   const handleInputChange = (e) => {
     setNewTodo(e.target.value);
   };
-
-  // + 누르거나 enter 둘다 해당함수 호출
+  // submit 시 todo 추가
   const handleAddTodo = () => {
     if (newTodo.trim() !== "") {
       setTodo([newTodo, ...todo]);
@@ -42,7 +41,7 @@ function App() {
         </button>
       </form>
       <main>
-        <Cards todo={todo}></Cards>
+        <Cards todo={todo} setTodo={setTodo}></Cards>
       </main>
     </div>
   );
