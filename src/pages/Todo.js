@@ -3,18 +3,14 @@ import TodoCountBtn from "../components/TodoCountBtn";
 import { useState } from "react";
 import { headerBtnState } from "../state/headerBtnState";
 import EachTodo from "../components/EachTodo";
+import { getTodo } from "../hooks/getTodo";
 
 export default function Todo() {
-  const todoList = [
-    {
-      todoText: "영화보기",
-      checked: true,
-    },
-    {
-      todoText: "공부하기",
-      checked: false,
-    },
-  ];
+  const [todoValue, setTodoValue] = useState("");
+  const todoLists = getTodo();
+  const todoInputChanged = (e) => {
+    setTodoValue(e.target.value);
+  };
   return (
     <TodoWrapper>
       <TodoHeader>
@@ -33,7 +29,11 @@ export default function Todo() {
       </TodoHeader>
       <TodoMainBoard>
         <AddTodoWrapper>
-          <AddTodoInput placeholder="입력하세요" />
+          <AddTodoInput
+            placeholder="입력하세요"
+            value={todoValue}
+            onChange={todoInputChanged}
+          />
           <AddTodoBtn>
             <span>+</span>
           </AddTodoBtn>

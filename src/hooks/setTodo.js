@@ -1,3 +1,3 @@
-export const saveTodo = (todoList) => {
+export const setTodo = (todoList) => {
   localStorage.setItem("todoList", todoList);
 };
