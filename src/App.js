@@ -1,50 +1,50 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import Cards from "./components/Cards.js";
+import Clock from "./components/Clock.js";
 function App() {
-  const [todo, setTodo] = useState(["운동하기", "밥먹기"]);
-  const [currentTime, setCurrentTime] = useState(new Date());
-
-  // 시간 업데이트
-  const updateClock = () => {
-    setCurrentTime(new Date());
+  const [todo, setTodo] = useState([]);
+  const [newTodo, setNewTodo] = useState("");
+  //input handler
+  const handleInputChange = (e) => {
+    setNewTodo(e.target.value);
   };
 
-  useEffect(() => {
-    const timer = setInterval(updateClock, 1000);
-
-    return () => {
-      clearInterval(timer);
-    };
-  }, []);
-
-  const options = {
-    weekday: "long",
-    month: "numeric",
-    day: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit",
-    hour12: false, //오전 오후 나누는거 false 처리
+  // + 누르거나 enter 둘다 해당함수 호출
+  const handleAddTodo = () => {
+    if (newTodo.trim() !== "") {
+      setTodo([newTodo, ...todo]);
+      setNewTodo("");
+    }
   };
-  //string으로 만들어 변수로 변환한다.
-  const stringTime = currentTime.toLocaleDateString("ko-KR", options);
-
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleAddTodo();
+  };
   return (
-    <>
-      <div className="header">
+    <div className="wrapper">
+      <header className="header">
         <div className="logo">TODO-list</div>
         <div className="detail">
           <div>투두리스트를 작성하고 오늘 하루를 기록해요</div>
-          <div id="clock-js">{stringTime}</div>
+          <Clock />
         </div>
-      </div>
-      <div className="todoInput">
-        <input placeholder=" ADD TODO"></input>
-        <button id="plusButton">+</button>
-      </div>
-      <Cards todo={todo}></Cards>
-    </>
+      </header>
+      <form className="todoInput" onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder=" ADD TODO"
+          value={newTodo}
+          onChange={handleInputChange}
+        />
+        <button id="plusButton" type="submit">
+          +
+        </button>
+      </form>
+      <main>
+        <Cards todo={todo}></Cards>
+      </main>
+    </div>
   );
 }
 
