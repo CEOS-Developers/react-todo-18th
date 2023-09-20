@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+// localStorage에서 data load
 const TODOS = JSON.parse(localStorage.getItem('todos') || '[]').map(
   (todo, id) => ({
     ...todo,
@@ -29,9 +30,11 @@ const pushTodo = (todos, newTodo) => {
   }
 };
 
+// todo의 추가, 삭제, 변경을 다루기 위한 custom hook
 export const useTodo = () => {
   const [todos, setTodos] = useState(TODOS);
 
+  // 상태 변경 및 localStorage 업데이트
   const saveChanges = (newTodos) => {
     setTodos(newTodos);
     localStorage.setItem('todos', JSON.stringify(newTodos));

@@ -1,13 +1,15 @@
 import { useRef, useState } from 'react';
 
+// todo의 input data를 처리하기 위한 custom hook
 export const useTodoInput = () => {
   const [content, setContent] = useState('');
-  const [priority, setPriority] = useState(3);
+  const [priority, setPriority] = useState(2);
   const [fromDate, setFromDate] = useState('');
   const [toDate, setToDate] = useState('');
   const [isSecret, setIsSecret] = useState(false);
 
-  const toDateRef = useRef();
+  const contentRef = useRef(); // todo 추가시 textarea height 초기화를 위해
+  const toDateRef = useRef(); // 시작일 설정에 따라 종료일의 min값을 설정하기 위해
 
   const todo = {
     content: content.trim(),
@@ -17,36 +19,38 @@ export const useTodoInput = () => {
     isSecret,
   };
 
-  const onChangeContent = (e) => {
+  const handleChangeContent = (e) => {
     setContent(e.target.value);
+    // 줄바꿈에 따라 textarea의 높이도 조절되도록
     e.target.style.height = 'auto';
     e.target.style.height = e.target.scrollHeight + 'px';
   };
 
-  const onClickPriority = (e) => {
+  const handleClickPriority = (e) => {
     setPriority(Number(e.target.value));
   };
 
-  const onChangeFromDate = (e) => {
+  const handleChangeFromDate = (e) => {
     setFromDate(e.target.value);
     toDateRef.current.min = e.target.value;
     if (toDate < e.target.value) setToDate('');
   };
 
-  const onChangeToDate = (e) => {
+  const handleChangeToDate = (e) => {
     setToDate(e.target.value);
   };
 
-  const onChangeSecret = (e) => {
+  const handleChangeSecret = (e) => {
     setIsSecret(e.target.checked);
   };
 
   const resetValue = () => {
     setContent('');
-    setPriority(3);
+    setPriority(2);
     setFromDate('');
     setToDate('');
     setIsSecret(false);
+    contentRef.current.style.height = 'auto'; // textarea 높이 초기화
   };
 
   return {
@@ -56,12 +60,13 @@ export const useTodoInput = () => {
     toDate,
     todo,
     isSecret,
+    contentRef,
     toDateRef,
-    onChangeContent,
-    onClickPriority,
-    onChangeFromDate,
-    onChangeToDate,
-    onChangeSecret,
+    handleChangeContent,
+    handleClickPriority,
+    handleChangeFromDate,
+    handleChangeToDate,
+    handleChangeSecret,
     resetValue,
   };
 };

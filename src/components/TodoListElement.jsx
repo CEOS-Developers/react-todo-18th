@@ -17,28 +17,29 @@ const TodoListElement = ({
   handleClickDeleteButton,
   handleClickDoneButton,
 }) => {
-  let [title, ...body] = todo.content.split('\n\n');
+  let [title, ...body] = todo.content.split('\n\n'); // todo를 title과 body로 분리
   const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
-  body = body.join('');
+  body = body.join('\n\n'); // split된 바디 다시 join해줌
   const authState = useAuthStore((state) => state.auth.authState);
 
   return (
     <>
-      {isDetailModalOpen && body && (
-        <TodoDetail
-          title={title}
-          body={body}
-          todo={todo}
-          handleCloseButton={() => {
-            setIsDetailModalOpen(false);
-          }}
-          handleClickDeleteButton={handleClickDeleteButton}
-          handleClickDoneButton={handleClickDoneButton}
-        />
-      )}
+      {isDetailModalOpen &&
+        body && ( // body가 있는 글만 modal 열리도록
+          <TodoDetail
+            title={title}
+            body={body}
+            todo={todo}
+            handleCloseButton={() => {
+              setIsDetailModalOpen(false);
+            }}
+            handleClickDeleteButton={handleClickDeleteButton}
+            handleClickDoneButton={handleClickDoneButton}
+          />
+        )}
       <TodoListElementContainer
         onClick={() => {
-          if (todo.isSecret && authState !== authStates.AUTHORIZED) return;
+          if (todo.isSecret && authState !== authStates.AUTHORIZED) return; // 비밀글이면 클릭 못하게
           setIsDetailModalOpen(true);
         }}
       >
