@@ -1,9 +1,11 @@
 import styled from "styled-components";
 
-export default function TodoCountBtn({ btnState, addClass }) {
+export default function TodoCountBtn({ btnState, addClass, todoLists }) {
   return (
     <BtnWrapper $bgColor={btnState.bgColor} $addClass={addClass}>
-      <span>{btnState.text}: 10</span>
+      <span>
+        {btnState.text}: {btnState.getBtnNum(todoLists)}
+      </span>
     </BtnWrapper>
   );
 }

@@ -39,6 +39,7 @@ export default function Todo() {
               key={btnState.text}
               btnState={btnState}
               addClass="margin:0 1.5rem;"
+              todoLists={todoLists}
             />
           ))}
         </HeaderBtnWrapper>
