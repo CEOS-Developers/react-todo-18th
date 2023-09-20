@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { setTodo } from "../hooks/setTodo";
 
@@ -11,9 +11,16 @@ export default function EachTodo({ index, todo, todoLists, setTodoLists }) {
       checked: !updatedTodoLists[index].checked,
     };
     setTodoLists(updatedTodoLists);
-    setTodo(updatedTodoLists);
     setCheckState((prev) => !prev);
   };
+  const deleteTodo = () => {
+    const updatedTodoLists = [...todoLists];
+    updatedTodoLists.splice(index, 1);
+    setTodoLists(updatedTodoLists);
+  };
+  useEffect(() => {
+    setTodo(todoLists);
+  }, [todoLists]);
   return (
     <EachTodoWrapper>
       <CheckBox
@@ -24,7 +31,7 @@ export default function EachTodo({ index, todo, todoLists, setTodoLists }) {
       <TodoText $checked={todo.checked}>
         <span>{todo.todoText}</span>
       </TodoText>
-      <DeleteBtn>X</DeleteBtn>
+      <DeleteBtn onClick={deleteTodo}>X</DeleteBtn>
     </EachTodoWrapper>
   );
 }
