@@ -50,4 +50,9 @@ export const PasswordButton = styled.button`
 
 export const AuthButton = styled.button`
   margin: 0 10px;
+
+  .authIcon {
+    width: 25px;
+    height: 25px;
+  }
 `;

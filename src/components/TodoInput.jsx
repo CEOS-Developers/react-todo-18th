@@ -1,22 +1,15 @@
+import { useRef } from 'react';
 import {
   AddButton,
   DateInput,
   PriorityOuterDiv,
-  // PriorityInput,
   SecretInput,
   ContentTextArea,
   TodoInputContainer,
 } from '../styles/TodoInput.style';
 import { useTodoInput } from '../hooks/useTodoInput';
-
 import { authStates, useAuthStore } from '../stores/useAuthStore';
-import { useRef } from 'react';
-
-const PRIORITY = {
-  high: 3,
-  mid: 2,
-  low: 1,
-};
+import { priorityMap } from '../utils/common';
 
 const TodoInput = ({ addTodo }) => {
   const {
@@ -47,7 +40,7 @@ const TodoInput = ({ addTodo }) => {
       ></ContentTextArea>
       <div className="options">
         <div className="option priority">
-          {Object.entries(PRIORITY).map(([key, value]) => (
+          {Object.entries(priorityMap).map(([value, key]) => (
             <PriorityOuterDiv key={key}>
               <input
                 id={key}
@@ -66,7 +59,6 @@ const TodoInput = ({ addTodo }) => {
           <DateInput value={fromDate} onChange={onChangeFromDate} />
           <DateInput value={toDate} onChange={onChangeToDate} ref={toDateRef} />
         </div>
-
         {authState === authStates.AUTHORIZED && (
           <div className="option secret">
             <SecretInput checked={isSecret} onChange={onChangeSecret} />

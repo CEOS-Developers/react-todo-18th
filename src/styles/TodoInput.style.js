@@ -14,6 +14,7 @@ export const TodoInputContainer = styled.div`
     flex-wrap: wrap;
     .option {
       box-sizing: border-box;
+      height: 50px;
       flex: 1;
       font-size: 14px;
       background-color: white;
@@ -62,8 +63,6 @@ export const TodoInputContainer = styled.div`
   }
 `;
 
-export const ContentInput = styled.input``;
-
 export const ContentTextArea = styled.textarea.attrs({
   // 내용물에 따른 높이조절을 위한 attrs
   placeholder: '내용을 입력해주세요.',
@@ -76,7 +75,7 @@ export const ContentTextArea = styled.textarea.attrs({
 
   display: block;
   box-sizing: border-box;
-  padding: 10px;
+  padding: 15px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   border: 1px solid #bcbcbc;
@@ -93,13 +92,10 @@ export const PriorityOuterDiv = styled.div`
   .priorityLabel {
   }
 `;
-// export const PriorityInput = styled.input.attrs({ type: 'radio' })``;
 
 export const DateInput = styled.input.attrs({ type: 'date' })`
   margin: 0 5px;
   border: none;
-  // width: 30px;
-  // background-color: black;
 `;
 
 export const SecretInput = styled.input.attrs({ type: 'checkbox' })``;
@@ -107,7 +103,7 @@ export const SecretInput = styled.input.attrs({ type: 'checkbox' })``;
 export const AddButton = styled.button`
   box-sizing: border-box;
   width: 100%;
-  padding: 5px;
+  padding: 10px;
   text-align: center;
   color: white;
   background-color: black;

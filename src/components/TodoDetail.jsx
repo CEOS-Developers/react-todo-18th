@@ -8,7 +8,7 @@ import {
   DetailButtonsOuter,
   DetailButton,
 } from '../styles/TodoDetail.style';
-import { convertDate, convertPriority } from '../utils/common';
+import { convertDate, priorityMap } from '../utils/common';
 
 const TodoDetail = ({
   title,
@@ -28,7 +28,7 @@ const TodoDetail = ({
           <div className="info betweenDate">-</div>
           <div className="info date toDate">{convertDate(todo.toDate)}</div>
           <div className="info">중요도: </div>
-          <div className="priority">{convertPriority(todo.priority)}</div>
+          <div className="priority">{priorityMap[todo.priority]}</div>
         </DetailInfoDiv>
         <DetailBodyDiv>{body}</DetailBodyDiv>
         <DetailButtonsOuter>

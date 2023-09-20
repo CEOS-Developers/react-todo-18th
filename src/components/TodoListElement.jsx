@@ -8,7 +8,7 @@ import {
   DoneButton,
   DeleteButton,
 } from '../styles/TodoListElement.style';
-import { convertDate, convertPriority } from '../utils/common';
+import { convertDate, priorityMap } from '../utils/common';
 import TodoDetail from './TodoDetail';
 import { authStates, useAuthStore } from '../stores/useAuthStore';
 
@@ -38,6 +38,7 @@ const TodoListElement = ({
       )}
       <TodoListElementContainer
         onClick={() => {
+          if (todo.isSecret && authState !== authStates.AUTHORIZED) return;
           setIsDetailModalOpen(true);
         }}
       >
@@ -45,7 +46,7 @@ const TodoListElement = ({
           <SecretDiv>비밀글입니다.</SecretDiv>
         ) : (
           <div
-            className={`infoOuter ${convertPriority(todo.priority)} ${
+            className={`infoOuter ${priorityMap[todo.priority]} ${
               todo.isDone ? 'done' : ''
             }`}
           >

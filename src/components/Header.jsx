@@ -9,6 +9,10 @@ import {
   PasswordButton,
   AuthButton,
 } from '../styles/Header.style';
+import lockIcon from '../images/lock.png';
+import unlockIcon from '../images/unlock.png';
+import settingIcon from '../images/setting.png';
+import resetIcon from '../images/reset.png';
 
 const Header = () => {
   const { login, logout, register, reset } = useAuth();
@@ -20,15 +24,15 @@ const Header = () => {
   const ButtonSelector = {};
   ButtonSelector[authStates.AUTHORIZED] = {
     clickHandler: logout,
-    src: '잠금',
+    src: unlockIcon,
   };
   ButtonSelector[authStates.UNAUTHORIZED] = {
     clickHandler: login,
-    src: '잠금 해제',
+    src: lockIcon,
   };
   ButtonSelector[authStates.NOT_REGISTERED] = {
     clickHandler: register,
-    src: '비밀번호 설정',
+    src: settingIcon,
   };
 
   return (
@@ -65,11 +69,17 @@ const Header = () => {
               else setIsInputMode(true);
             }}
           >
-            {ButtonSelector[authState].src}
+            <img
+              src={ButtonSelector[authState].src}
+              alt=""
+              className="authIcon"
+            />
           </AuthButton>
         )}
         {!isInputMode && authState !== authStates.NOT_REGISTERED && (
-          <AuthButton onClick={reset}>초기화</AuthButton>
+          <AuthButton onClick={reset}>
+            <img src={resetIcon} alt="" className="authIcon" />
+          </AuthButton>
         )}
       </div>
     </HeaderContainer>

@@ -22,7 +22,6 @@ export const TodoDetailInner = styled.div`
   width: 100%;
   box-sizing: border-box;
   padding: 20px;
-  //   margin-bottom: 100px;
   background-color: white;
   border-radius: 10px;
 `;
@@ -65,7 +64,6 @@ export const DetailBodyDiv = styled.div`
   white-space: break-spaces;
   overflow-y: auto;
   margin-bottom: 40px;
-  //   white-space: pre-wrap;
 `;
 
 export const DetailButtonsOuter = styled.div`
