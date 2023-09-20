@@ -164,3 +164,11 @@ body {
   padding: 10px;
   margin: 0;
 }
+
+input[type='button'],
+input[type='text'],
+input[type='password'],
+textarea {
+  -webkit-border-radius: 0;
+  -webkit-appearance: none;
+}
