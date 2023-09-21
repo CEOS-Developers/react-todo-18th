@@ -48,6 +48,7 @@ const InputBox = styled.input`
   border-radius: 10px;
   transition: border-color 0.2s;
   outline: none;
+  font-size: 1vw;
 
   &:focus {
     border-color: rgba(239, 64, 90, 0.2);

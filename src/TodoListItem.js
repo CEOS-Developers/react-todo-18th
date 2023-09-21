@@ -81,6 +81,7 @@ const CheckedBox = styled(ItemBox)`
 `;
 
 const UncheckedBox = styled(ItemBox)``;
+
 const RemoveBut = styled.button`
   opacity: 0;
   transition: opacity 0.2s;
@@ -96,9 +97,9 @@ const RemoveBut = styled.button`
   outline: none;
   cursor: pointer;
 
-  color: #ff5900;
+  color: rgba(239, 64, 90, 0.5);
 
-  margin-left: 3%;
+  margin-left: 20%;
 `;
 
 export default TodoListItem;

@@ -9,12 +9,14 @@ const Header = () => {
   const dayList = ['일', '월', '화', '수', '목', '금', '토'];
 
   return (
-    <HeaderBlock>
-      <Title>
-        {year}년 {month}월 {date}일
-      </Title>
-      <SubTitle>{dayList[day]}요일</SubTitle>
-    </HeaderBlock>
+    <div>
+      <HeaderBlock>
+        <Title>
+          {year}년 {month}월 {date}일
+        </Title>
+        <SubTitle>{dayList[day]}요일</SubTitle>
+      </HeaderBlock>
+    </div>
   );
 };
 

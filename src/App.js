@@ -30,6 +30,9 @@ const TodoBox = styled.div`
   margin-top: 5%;
   margin-bottom: 5%;
 
+  padding-top: 3%;
+  padding-bottom: 3%;
+
   border-radius: 10px;
   background: linear-gradient(
     180deg,

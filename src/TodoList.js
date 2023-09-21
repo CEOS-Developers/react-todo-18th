@@ -7,9 +7,13 @@ import InputBar from './InputBar';
 const TodoList = () => {
   const initialData = JSON.parse(localStorage.getItem('todos')) || [];
   const [data, setData] = useState(initialData);
+  const [doneData, setDoneData] = useState(
+    initialData.filter((item) => item.checked)
+  );
 
   useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(data));
+    setDoneData(data.filter((item) => item.checked));
   }, [data]);
 
   const nextId = useRef(parseInt(localStorage.getItem('nextId')) || 0);
@@ -47,6 +51,9 @@ const TodoList = () => {
           remove={remove}
         />
       ))}
+      <SubTitle>
+        {doneData.length} / {data.length} 완료
+      </SubTitle>
     </TodoListBox>
   );
 };
@@ -60,6 +67,16 @@ const TodoListBox = styled.div`
   padding-right: 10%;
   padding-top: 3%;
   padding-bottom: 3%;
+  //최대높이, 스크롤바 설정
+  max-height: 45vh;
+  overflow: auto;
 `;
 
+const SubTitle = styled.div`
+  font-size: 1vw;
+  font-weight: 200;
+  color: gray;
+
+  margin-left: 85%;
+`;
 export default TodoList;
