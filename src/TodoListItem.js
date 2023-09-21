@@ -1,6 +1,79 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
-const TodoListItem = () => {};
+const TodoListItem = ({ item, onItemChange }) => {
+  const toggleCheck = () => {
+    if (item.checked) {
+      //체크 되어있음
+      item.checked = false;
+    } else {
+      item.checked = true;
+    }
+
+    onItemChange(item);
+  };
+  return (
+    <div>
+      <ItemBox>
+        <Checkbox defaultChecked={item.checked} onChange={toggleCheck} />
+        {item.checked ? (
+          <CheckedBox>
+            <Label>{item.text}</Label>
+          </CheckedBox>
+        ) : (
+          <UncheckedBox>
+            <Label>{item.text}</Label>
+          </UncheckedBox>
+        )}
+      </ItemBox>
+    </div>
+  );
+};
+
+const ItemBox = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1%;
+`;
+
+const Checkbox = styled.input.attrs({ type: 'checkbox' })`
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  border: 1px solid #999;
+  appearance: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  position: relative;
+
+  &:checked {
+    background: gray;
+    border: none;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 28%;
+      left: 25%;
+      transform: translate(-50%, -50%);
+      width: 0.4rem;
+      height: 0.15rem;
+      border-left: 2px solid white;
+      border-bottom: 2px solid white;
+      transform: rotate(-45deg);
+    }
+  }
+`;
+
+const Label = styled.label`
+  font-size: 1vw;
+`;
+
+const CheckedBox = styled(ItemBox)`
+  color: gray;
+  text-decoration: line-through;
+`;
+
+const UncheckedBox = styled(ItemBox)``;
 
 export default TodoListItem;
