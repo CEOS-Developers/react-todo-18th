@@ -1,14 +1,22 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import TodoListItem from './TodoListItem';
+import InputBar from './InputBar';
 
 const TodoList = () => {
   const [data, setData] = useState([
     {
+      id: 1,
       text: '밥먹기',
       checked: true,
     },
     {
+      id: 2,
+      text: '밥먹기',
+      checked: true,
+    },
+    {
+      id: 3,
       text: '잠자기',
       checked: false,
     },
@@ -19,7 +27,7 @@ const TodoList = () => {
   const handleItemChange = (updatedItem) => {
     // 변경된 item을 찾아서 data state를 업데이트합니다.
     const updatedData = data.map((item) =>
-      item.text === updatedItem.text ? updatedItem : item
+      item.id === updatedItem.id ? updatedItem : item
     );
     setData(updatedData);
 
@@ -32,8 +40,13 @@ const TodoList = () => {
   }, [data]);
   return (
     <TodoListBox>
+      <InputBar />
       {data.map((item) => (
-        <TodoListItem item={item} onItemChange={handleItemChange} />
+        <TodoListItem
+          key={item.id}
+          item={item}
+          onItemChange={handleItemChange}
+        />
       ))}
     </TodoListBox>
   );
