@@ -12,7 +12,8 @@ function App() {
   // submit 시 todo 추가
   const handleAddTodo = () => {
     if (newTodo.trim() !== "") {
-      setTodo([newTodo, ...todo]);
+      const newTodoItem = { content: newTodo, checked: false };
+      setTodo([newTodoItem, ...todo]);
       setNewTodo("");
     }
   };
