@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import {
   TodoListElementContainer,
   ContentDiv,
@@ -72,4 +72,4 @@ const TodoListElement = ({
   );
 };
 
-export default TodoListElement;
+export default memo(TodoListElement);

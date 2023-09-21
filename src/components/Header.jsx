@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import { useAuth } from '../hooks/useAuth';
 import { authStates, useAuthStore } from '../stores/useAuthStore';
 import {
@@ -93,4 +93,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default memo(Header);

@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 
 // todo의 input data를 처리하기 위한 custom hook
 export const useTodoInput = () => {
@@ -26,23 +26,26 @@ export const useTodoInput = () => {
     e.target.style.height = e.target.scrollHeight + 'px';
   };
 
-  const handleClickPriority = (e) => {
+  const handleClickPriority = useCallback((e) => {
     setPriority(Number(e.target.value));
-  };
+  }, []);
 
-  const handleChangeFromDate = (e) => {
-    setFromDate(e.target.value);
-    toDateRef.current.min = e.target.value;
-    if (toDate < e.target.value) setToDate('');
-  };
+  const handleChangeFromDate = useCallback(
+    (e) => {
+      setFromDate(e.target.value);
+      toDateRef.current.min = e.target.value;
+      if (toDate < e.target.value) setToDate('');
+    },
+    [toDate]
+  );
 
-  const handleChangeToDate = (e) => {
+  const handleChangeToDate = useCallback((e) => {
     setToDate(e.target.value);
-  };
+  }, []);
 
-  const handleChangeSecret = (e) => {
+  const handleChangeSecret = useCallback((e) => {
     setIsSecret(e.target.checked);
-  };
+  }, []);
 
   const resetValue = () => {
     setContent('');
