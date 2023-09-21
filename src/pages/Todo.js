@@ -12,6 +12,11 @@ export default function Todo() {
   const todoInputChanged = (e) => {
     setTodoText(e.target.value);
   };
+  const enterPressed = (e) => {
+    if (e.key === "Enter") {
+      addTodoClicked();
+    }
+  };
   const addTodoClicked = () => {
     if (todoText.trim() === "") {
       alert("todo를 입력하세요");
@@ -50,6 +55,7 @@ export default function Todo() {
             placeholder="입력하세요"
             value={todoText}
             onChange={todoInputChanged}
+            onKeyDown={enterPressed}
           />
           <AddTodoBtn onClick={addTodoClicked}>
             <span>+</span>
