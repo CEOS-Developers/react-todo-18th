@@ -1,8 +1,13 @@
-const ListContainer = () => {
+import TodoItem from "./TodoItem";
+
+const ListContainer = ({ data }) => {
   return (
     <div className="ListContainer">
-      <h1>리스트컨테이너</h1>
+      <h1>Todo 🟡</h1>
+
+      <div>{data && data.map((it) => <TodoItem key={it.id} {...it} />)}</div>
     </div>
   );
 };
+
 export default ListContainer;
