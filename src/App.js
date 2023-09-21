@@ -2,7 +2,28 @@ import React, { useState, useEffect } from "react";
 import TodoList from "./components/todoList";
 import DoneList from "./components/doneList";
 import InputTodo from "./components/inputTodo";
+import { createGlobalStyle } from 'styled-components'
 
+const GlobalStyle = createGlobalStyle`
+  main {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 620px;
+    margin: 30px auto;
+    padding: 25px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+  }
+
+  h1 {
+    font-size: 35px;
+    color: #000000;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+`;
 function App() {
   const [todos, setTodos] = useState([]);
   const [dones, setDones] = useState([]);
@@ -45,6 +66,7 @@ function App() {
 
   return (
     <>
+    <GlobalStyle />
       <main>
         <h1>할 일</h1>
         <InputTodo addTodo={addTodo} />
