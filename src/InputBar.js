@@ -3,10 +3,24 @@ import styled from 'styled-components';
 
 const InputBar = ({ insert }) => {
   const [value, setValue] = useState('');
+  const checkValue = (tempVal) => {
+    //입력값 유효성 검사
+    tempVal = tempVal.trim();
+    if (tempVal === '') {
+      alert('입력이 필요해요!');
+      return false;
+    } else if (tempVal.length >= 30) {
+      alert('30자 이하로 입력해주세요!');
+      return false;
+    }
+    return true;
+  };
   const onSubmit = (e) => {
-    insert(value);
-    setValue(''); //입력값 초기화
-    e.preventDefault();
+    if (checkValue(value)) {
+      insert(value);
+      setValue(''); //입력값 초기화
+      e.preventDefault();
+    }
   };
 
   return (
