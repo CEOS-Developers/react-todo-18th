@@ -1,11 +1,16 @@
-const TodoItem = ({ onDelete, value, id, isDone }) => {
+const TodoItem = ({ onDelete, moveItem, value, id, isDone }) => {
   return (
-    <div className="TodoItem">
+    <div
+      className="TodoItem"
+      onClick={() => {
+        moveItem(id);
+      }}
+    >
       <div>{value}</div>
       <button
-        onClick={() => {
+        onClick={(e) => {
           if (window.confirm(`Delete this task?`)) {
-            onDelete(id);
+            onDelete(id, e);
           }
         }}
       >

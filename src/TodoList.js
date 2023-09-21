@@ -21,20 +21,34 @@ const TodoList = () => {
     setData([...data, newItem]);
   };
 
-  const onDelete = (targetId) => {
+  const onDelete = (targetId, e) => {
+    e.stopPropagation();
     const newTodoList = data.filter((it) => it.id !== targetId);
     setData(newTodoList);
   };
+
+  const moveItem = (targetId) => {
+    const updatedData = data.map((item) => {
+      if (item.id === targetId) {
+        if (window.confirm(`Move this task?`)) {
+          return {
+            ...item,
+            isDone: !item.isDone,
+          };
+        }
+      }
+      return item;
+    });
+    setData(updatedData);
+  };
+
   return (
     <div className="TodoList">
       <Clock />
       <div className="title">To Do List</div>
       <TodoInput onCreate={onCreate} />
-      <div className="todo_space">
-        <ListContainer onDelete={onDelete} data={data} />
-      </div>
-      <div className="done_space">
-        <ListContainer onDelete={onDelete} data={data} />
+      <div className="content_space">
+        <ListContainer onDelete={onDelete} moveItem={moveItem} data={data} />
       </div>
     </div>
   );
