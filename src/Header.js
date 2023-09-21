@@ -24,7 +24,7 @@ const HeaderBlock = styled.div`
   justify-content: center;
   align-items: flex-start;
 
-  padding-left: 5%;
+  padding-left: 10%;
   padding-top: 3%;
 `;
 

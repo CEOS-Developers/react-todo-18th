@@ -24,7 +24,7 @@ const Wrapper = styled.div`
 
 const TodoBox = styled.div`
   background-color: red;
-  width: 70%;
+  width: 50%;
   height: 80%;
 
   margin-top: 5%;

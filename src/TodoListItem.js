@@ -39,7 +39,7 @@ const TodoListItem = ({ item, onItemChange, remove }) => {
 const ItemBox = styled.div`
   display: flex;
   align-items: center;
-  gap: 1%;
+  gap: 2%;
 `;
 
 const Checkbox = styled.input.attrs({ type: 'checkbox' })`
@@ -81,7 +81,24 @@ const CheckedBox = styled(ItemBox)`
 `;
 
 const UncheckedBox = styled(ItemBox)``;
+const RemoveBut = styled.button`
+  opacity: 0;
+  transition: opacity 0.2s;
 
-const RemoveBut = styled.button``;
+  ${ItemBox}:hover & {
+    opacity: 1;
+  }
+
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  cursor: pointer;
+
+  color: #ff5900;
+
+  margin-left: 3%;
+`;
 
 export default TodoListItem;
