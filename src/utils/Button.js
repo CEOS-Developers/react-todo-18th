@@ -9,7 +9,6 @@ const StyledButton = styled.button`
   padding: 10px;
   border-radius: 5px;
   font-family: "paybooc-Light", sans-serif;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
   text-decoration: none;
   font-weight: 600;
   transition: 0.25s;

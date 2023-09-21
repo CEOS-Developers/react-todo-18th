@@ -2,10 +2,14 @@ import React from "react";
 import TodoItem from "./TodoItem";
 import styled from "styled-components";
 //list 이동 관리
-
+const ListContainer = styled.div`
+  height: 200px;
+  overflow-y: auto;
+  // 내용이 넘치면 스크롤바 나타나게
+`;
 function TodoList({ items, moveBtn, deleteBtn, isDone }) {
   return (
-    <div className="listContainer">
+    <ListContainer>
       <ul>
         {items.map((item, index) => (
           <TodoItem
@@ -18,7 +22,7 @@ function TodoList({ items, moveBtn, deleteBtn, isDone }) {
           />
         ))}
       </ul>
-    </div>
+    </ListContainer>
   );
 }
 
