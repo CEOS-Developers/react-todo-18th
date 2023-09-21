@@ -10,6 +10,7 @@ export const useTodoInput = () => {
 
   const contentRef = useRef(); // todo 추가시 textarea height 초기화를 위해
   const toDateRef = useRef(); // 시작일 설정에 따라 종료일의 min값을 설정하기 위해
+  const fromDateRef = useRef();
 
   const todo = {
     content: content.trim(),
@@ -34,14 +35,21 @@ export const useTodoInput = () => {
     (e) => {
       setFromDate(e.target.value);
       toDateRef.current.min = e.target.value;
-      if (toDate < e.target.value) setToDate('');
+      if (toDate < e.target.value || !toDateRef.current.value)
+        setToDate(e.target.value);
     },
     [toDate]
   );
 
-  const handleChangeToDate = useCallback((e) => {
-    setToDate(e.target.value);
-  }, []);
+  const handleChangeToDate = useCallback(
+    (e) => {
+      setToDate(e.target.value);
+      fromDateRef.current.max = e.target.value;
+      if (fromDate > e.target.value || !fromDateRef.current.value)
+        setFromDate(e.target.value);
+    },
+    [fromDate]
+  );
 
   const handleChangeSecret = useCallback((e) => {
     setIsSecret(e.target.checked);
@@ -65,6 +73,7 @@ export const useTodoInput = () => {
     isSecret,
     contentRef,
     toDateRef,
+    fromDateRef,
     handleChangeContent,
     handleClickPriority,
     handleChangeFromDate,

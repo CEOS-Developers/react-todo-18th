@@ -16,6 +16,7 @@ const TodoInput = ({ addTodo }) => {
     todo,
     isSecret,
     contentRef,
+    fromDateRef,
     toDateRef,
     handleChangeContent,
     handleClickPriority,
@@ -39,6 +40,7 @@ const TodoInput = ({ addTodo }) => {
         fromDate={fromDate}
         toDate={toDate}
         isSecret={isSecret}
+        fromDateRef={fromDateRef}
         toDateRef={toDateRef}
         handleClickPriority={handleClickPriority}
         handleChangeFromDate={handleChangeFromDate}

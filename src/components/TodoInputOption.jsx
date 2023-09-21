@@ -12,6 +12,7 @@ const TodoInputOption = ({
   fromDate,
   toDate,
   isSecret,
+  fromDateRef,
   toDateRef,
   handleClickPriority,
   handleChangeFromDate,
@@ -38,7 +39,11 @@ const TodoInputOption = ({
         ))}
       </div>
       <div className="option date">
-        <DateInput value={fromDate} onChange={handleChangeFromDate} />
+        <DateInput
+          value={fromDate}
+          onChange={handleChangeFromDate}
+          ref={fromDateRef}
+        />
         <DateInput
           value={toDate}
           onChange={handleChangeToDate}
