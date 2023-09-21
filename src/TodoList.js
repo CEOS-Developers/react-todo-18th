@@ -23,6 +23,18 @@ const TodoList = () => {
   ]);
 
   //useEffect로 mount될 때 local에서 따오기
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
+
+  const insert = (insertedText) => {
+    const insertedItem = {
+      id: data.length + 1,
+      text: insertedText,
+      checked: false,
+    };
+    setData(data.concat(insertedItem));
+  };
 
   const handleItemChange = (updatedItem) => {
     // 변경된 item을 찾아서 data state를 업데이트합니다.
@@ -36,11 +48,11 @@ const TodoList = () => {
   };
 
   useEffect(() => {
-    console.log(data);
+    // console.log(data);
   }, [data]);
   return (
     <TodoListBox>
-      <InputBar />
+      <InputBar insert={insert} />
       {data.map((item) => (
         <TodoListItem
           key={item.id}
