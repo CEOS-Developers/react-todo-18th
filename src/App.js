@@ -24,13 +24,26 @@ const GlobalStyle = createGlobalStyle`
     margin-bottom: 20px;
   }
 `;
+
 function App() {
   const [todos, setTodos] = useState([]);
   const [dones, setDones] = useState([]);
 
+  useEffect(() => {
+    const savedTodos = localStorage.getItem("todos");
+    const savedDones = localStorage.getItem("dones");
+    if (savedTodos) setTodos(JSON.parse(savedTodos));
+    if (savedDones) setDones(JSON.parse(savedDones));
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+    localStorage.setItem("dones", JSON.stringify(dones));
+  }, [todos, dones]);
+
   const addTodo = (item) => {
     setTodos([...todos, { id: new Date().getTime(), text: item }]);
-  };//item 추가
+  };
 
   const deleteItem = (listName, index) => {
     const list = listName === "todos" ? todos : dones;
@@ -39,10 +52,9 @@ function App() {
     listName === "todos" ? setTodos(newList) : setDones(newList);
   };
 
-//기존의 리스트와, 인덱스를 받아 todo <-> done , 
-
   const switchList = (fromListName, index) => {
     let fromList, toList, setFromList, setToList;
+
     if (fromListName === "todos") {
       fromList = todos;
       toList = dones;
@@ -66,7 +78,7 @@ function App() {
 
   return (
     <>
-    <GlobalStyle />
+      <GlobalStyle />
       <main>
         <h1>할 일</h1>
         <InputTodo addTodo={addTodo} />
@@ -78,3 +90,4 @@ function App() {
 }
 
 export default App;
+
