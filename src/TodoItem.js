@@ -1,9 +1,16 @@
-const TodoItem = ({ value, id, isDone }) => {
+const TodoItem = ({ onDelete, value, id, isDone }) => {
   return (
-    <div clssName="TodoItem">
-      <div className="data">
-        <span>{value}</span>
-      </div>
+    <div className="TodoItem">
+      <div>{value}</div>
+      <button
+        onClick={() => {
+          if (window.confirm(`Delete this task?`)) {
+            onDelete(id);
+          }
+        }}
+      >
+        🗑
+      </button>
     </div>
   );
 };
