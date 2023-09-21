@@ -1,6 +1,6 @@
 import React from "react";
 import TodoItem from "./TodoItem";
-
+import styled from "styled-components";
 //list 이동 관리
 
 function TodoList({ items, moveBtn, deleteBtn, isDone }) {
