@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useRef } from 'react';
 import styled from 'styled-components';
 import TodoListItem from './TodoListItem';
 import InputBar from './InputBar';
@@ -27,13 +28,18 @@ const TodoList = () => {
     console.log(data);
   }, [data]);
 
+  const nextId = useRef(4);
+
   const insert = (insertedText) => {
+    nextId.current += 1;
     const insertedItem = {
-      id: data.length + 1,
+      id: nextId.current,
       text: insertedText,
       checked: false,
     };
     setData(data.concat(insertedItem));
+
+    nextId.current += 1;
   };
 
   const remove = (removedId) => {
