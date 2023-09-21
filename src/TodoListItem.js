@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
-const TodoListItem = ({ item, onItemChange }) => {
+const TodoListItem = ({ item, onItemChange, remove }) => {
   const toggleCheck = () => {
     if (item.checked) {
-      //체크 되어있음
       item.checked = false;
     } else {
       item.checked = true;
@@ -25,6 +24,13 @@ const TodoListItem = ({ item, onItemChange }) => {
             <Label>{item.text}</Label>
           </UncheckedBox>
         )}
+        <RemoveBut
+          onClick={() => {
+            remove(item.id);
+          }}
+        >
+          X
+        </RemoveBut>
       </ItemBox>
     </div>
   );
@@ -75,5 +81,7 @@ const CheckedBox = styled(ItemBox)`
 `;
 
 const UncheckedBox = styled(ItemBox)``;
+
+const RemoveBut = styled.button``;
 
 export default TodoListItem;

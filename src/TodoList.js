@@ -36,6 +36,10 @@ const TodoList = () => {
     setData(data.concat(insertedItem));
   };
 
+  const remove = (removedId) => {
+    setData(data.filter((item) => item.id !== removedId));
+  };
+
   const handleItemChange = (updatedItem) => {
     // 변경된 item을 찾아서 data state를 업데이트합니다.
     const updatedData = data.map((item) =>
@@ -50,6 +54,7 @@ const TodoList = () => {
   useEffect(() => {
     // console.log(data);
   }, [data]);
+
   return (
     <TodoListBox>
       <InputBar insert={insert} />
@@ -58,6 +63,7 @@ const TodoList = () => {
           key={item.id}
           item={item}
           onItemChange={handleItemChange}
+          remove={remove}
         />
       ))}
     </TodoListBox>
