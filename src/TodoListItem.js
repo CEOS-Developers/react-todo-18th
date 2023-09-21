@@ -1,16 +1,16 @@
-import { useState } from 'react';
 import styled from 'styled-components';
 
 const TodoListItem = ({ item, onItemChange, remove }) => {
+  //체크 표시 시 todo <-> done 토글 함수
   const toggleCheck = () => {
     if (item.checked) {
       item.checked = false;
     } else {
       item.checked = true;
     }
-
     onItemChange(item);
   };
+
   return (
     <div>
       <ItemBox>

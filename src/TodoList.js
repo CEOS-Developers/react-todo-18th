@@ -11,6 +11,7 @@ const TodoList = () => {
     initialData.filter((item) => item.checked)
   );
 
+  //목록 업데이트 시 ls저장
   useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(data));
     setDoneData(data.filter((item) => item.checked));
@@ -18,6 +19,7 @@ const TodoList = () => {
 
   const nextId = useRef(parseInt(localStorage.getItem('nextId')) || 0);
 
+  //할일 추가 함수
   const insert = (insertedText) => {
     const insertedItem = {
       id: nextId.current,
@@ -30,10 +32,12 @@ const TodoList = () => {
     localStorage.setItem('nextId', nextId.current.toString());
   };
 
+  //할일 삭제 함수
   const remove = (removedId) => {
     setData((prevData) => prevData.filter((item) => item.id !== removedId));
   };
 
+  //할일 완료 함수
   const handleItemChange = (updatedItem) => {
     setData((prevData) =>
       prevData.map((item) => (item.id === updatedItem.id ? updatedItem : item))
