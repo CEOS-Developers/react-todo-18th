@@ -1,10 +1,24 @@
 import { useState, useEffect } from "react";
+import TodoForm from "./components/TodoForm";
+import TodoList from "./components/TodoList";
 
 function App() {
   const [todo, setTodo] = useState("");
-  const [todos, setTodos] = useState([]); //todo list를 추가할 배열
-  const [done, setDone] = useState("");
-  const [dones, setDones] = useState([]);
+  const [todos, setTodos] = useState(
+    () => JSON.parse(window.localStorage.getItem("todos")) || []
+  ); //todo list를 추가할 배열
+  const [dones, setDones] = useState(
+    () => JSON.parse(window.localStorage.getItem("dones")) || []
+  ); //done list를 추가할 배열
+
+  //todos , dones 에 변화가 있을 때마다 local storage에 저장
+  useEffect(() => {
+    window.localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
+
+  useEffect(() => {
+    window.localStorage.setItem("dones", JSON.stringify(dones));
+  }, [dones]);
 
   const onChange = (event) => setTodo(event.target.value);
   const onSubmit = (event) => {
@@ -45,37 +59,23 @@ function App() {
     <div>
       <h1>To-Do List</h1>
 
-      <form onSubmit={onSubmit}>
-        <input
-          type="text"
-          placeholder="📍Enter your to-do"
-          onChange={onChange}
-          value={todo}
-        ></input>
-        <button>Add to Do</button>
-      </form>
+      <TodoForm onSubmit={onSubmit} onChange={onChange} value={todo} />
       <hr />
       <h2>To Do : {todos.length}</h2>
-      <ul>
-        {todos.map((item, index) => (
-          <li key={index}>
-            {item}
-            <button onClick={() => moveBtn(index, false)}>↕️</button>
-            <button onClick={() => deleteBtn(index, false)}>❌</button>
-          </li>
-        ))}
-      </ul>
+      <TodoList
+        items={todos}
+        moveBtn={moveBtn}
+        deleteBtn={deleteBtn}
+        isDone={false}
+      />
       <hr />
       <h2> Done : {dones.length}</h2>
-      <ul>
-        {dones.map((item, index) => (
-          <li key={index}>
-            {item}
-            <button onClick={() => moveBtn(index, true)}>↕️</button>
-            <button onClick={() => deleteBtn(index, true)}>❌</button>
-          </li>
-        ))}
-      </ul>
+      <TodoList
+        items={dones}
+        moveBtn={moveBtn}
+        deleteBtn={deleteBtn}
+        isDone={true}
+      />
     </div>
   );
 }
