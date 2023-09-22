@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { setTodo } from "../hooks/setTodo";
 
 function EachTodo({ index, todo, todoLists, setTodoLists }) {
-  console.log(index);
   const [checkState, setCheckState] = useState(todo.checked);
   const checkboxChanged = (e) => {
     const updatedTodoLists = [...todoLists];
