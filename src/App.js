@@ -1,9 +1,19 @@
+import { GlobalStyle } from "./style/GlobalStyle";
+import Template from "./components/template/Template";
+import Background from "./components/organism/Background";
+import { RecoilRoot } from "recoil";
+
 function App() {
-	return (
-		<div>
-			<h1>18기 프론트 화이팅~ 푸하항ㅋ</h1>
-		</div>
-	);
+  return (
+    <RecoilRoot>
+      <GlobalStyle />
+      <>
+        {/* three.js 을 사용한 우주 배경 */}
+        <Background />
+        <Template />
+      </>
+    </RecoilRoot>
+  );
 }
 
 export default App;
