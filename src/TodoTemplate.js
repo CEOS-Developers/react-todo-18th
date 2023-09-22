@@ -17,13 +17,6 @@ function TodoTemplate() {
 
   const dateString = `${year}.${month}.${day}.`;
 
-  // input, progressbar toggle
-  const [popupVisible, setPopupVisible] = useState(true);
-
-  const togglePopup = () => {
-    setPopupVisible(!popupVisible);
-  };
-
   //todo
   const initialTodoData = localStorage.getItem("list")
     ? JSON.parse(localStorage.getItem("list"))
@@ -72,6 +65,18 @@ function TodoTemplate() {
     setValue(e.target.value);
   };
 
+  // input, progressbar toggle
+  const [popupVisible, setPopupVisible] = useState(true);
+
+  const togglePopup = () => {
+    setPopupVisible(!popupVisible);
+  };
+
+  const completedTasks = list.filter((task) => task.completed).length;
+  const totalTasks = list.length;
+
+  const progressText = `${completedTasks} / ${totalTasks}`;
+
   return (
     <>
       <GlobalStyle />
@@ -83,7 +88,7 @@ function TodoTemplate() {
       <TodoInputContainer>
         <img class="popup-button" src={input} onClick={togglePopup}></img>
         <ProgressContainer style={{ display: popupVisible ? "flex" : "none" }}>
-          <span class="progress"></span>
+          <span class="progress">{progressText}</span>
           <div class="progress-div">
             <div class="progress-bar"></div>
           </div>
@@ -103,7 +108,7 @@ function TodoTemplate() {
       </TodoInputContainer>
 
       <TodoContainer>
-        <article class="list-contents">
+        <article>
           <h3 class="list-title">TODO</h3>
           <div class="todo-list">
             {list.map((data) =>
@@ -120,7 +125,7 @@ function TodoTemplate() {
             )}
           </div>
         </article>
-        <article class="list-contents">
+        <article>
           <h3 class="list-title">DONE</h3>
           <div class="done-list">
             {list.map((data) =>

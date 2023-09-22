@@ -7,7 +7,7 @@ import check from "../images/favicon.png";
 function TodoListItem({ todo, deleteTodo, toggleTodo }) {
   return (
     <ListItem>
-      <IsDoneBox src={check}></IsDoneBox>
+      <IsDoneBox onClick={() => toggleTodo(todo.id)} src={check}></IsDoneBox>
       <TodoText onClick={() => toggleTodo(todo.id)}>{todo.title}</TodoText>
       <TodoDel src={del} onClick={() => deleteTodo(todo.id)} />
     </ListItem>
