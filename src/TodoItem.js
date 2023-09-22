@@ -111,6 +111,9 @@ const EditBtn = styled.button`
 `;
 
 const EditingBtn = styled.button`
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   border: none;
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 5px;
@@ -121,6 +124,7 @@ const EditingBtn = styled.button`
 
 const DeleteBtn = styled.button`
   opacity: 0;
+  white-space: nowrap
   border: none;
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 5px;
@@ -139,6 +143,7 @@ const EditTextarea = styled.textarea`
   border-radius: 5px;
   padding: 8px;
   font-size: 13px;
+  vertical-align: middlle;
 `;
 
 const Datalist = styled.div`

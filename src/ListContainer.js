@@ -43,6 +43,7 @@ const ListContainer = ({ onEdit, onDelete, moveItem, data }) => {
               <TodoItem
                 key={it.id}
                 {...it}
+                onEdit={onEdit}
                 onDelete={onDelete}
                 moveItem={moveItem}
               />
