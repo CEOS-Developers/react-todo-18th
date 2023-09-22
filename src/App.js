@@ -1,9 +1,13 @@
+import { Route, Routes, Navigate } from "react-router-dom";
+import Todo from "./pages/Todo";
+
 function App() {
-	return (
-		<div>
-			<h1>18기 프론트 화이팅~ 푸하항ㅋ</h1>
-		</div>
-	);
+  return (
+    <Routes>
+      <Route path="/" element={<Todo />} />
+      <Route path="/*" element={<Navigate to="/" />} />
+    </Routes>
+  );
 }
 
 export default App;
