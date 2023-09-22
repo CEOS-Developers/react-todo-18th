@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList";
 import styled from "styled-components";
-
+import NameInput from "./components/NameInput";
 const Container = styled.div`
   display: flex;
   justify-content: center;
@@ -28,7 +28,11 @@ const Title = styled.h1`
 `;
 
 function App() {
+  const [name, setName] = useState(
+    () => JSON.parse(window.localStorage.getItem("name")) || ""
+  );
   const [todo, setTodo] = useState("");
+
   const [todos, setTodos] = useState(
     () => JSON.parse(window.localStorage.getItem("todos")) || []
   );
@@ -43,12 +47,16 @@ function App() {
   useEffect(() => {
     window.localStorage.setItem("dones", JSON.stringify(dones));
   }, [dones]);
+  useEffect(() => {
+    window.localStorage.setItem("name", JSON.stringify(name));
+  }, [name]);
 
   const onChange = (event) => setTodo(event.target.value);
   const onSubmit = (event) => {
     event.preventDefault();
     if (todo.trim() === "") {
       setTodo("");
+      alert("Please enter a input!");
       return;
     }
     setTodos((currentArray) => [todo, ...currentArray]);
@@ -74,11 +82,21 @@ function App() {
       setTodos((currentArray) => [itemToMove, ...currentArray]);
     }
   };
+  const handleNameSubmit = (enteredName) => {
+    setName(enteredName);
+  };
+
+  const titleText = name ? `${name}'s To-Do List` : "To-Do List";
 
   return (
     <Container>
       <TodoBox>
-        <Title> To-Do List</Title>
+        {name ? (
+          <Title>{titleText}</Title>
+        ) : (
+          <NameInput onNameSubmit={handleNameSubmit} />
+        )}
+
         <TodoForm onSubmit={onSubmit} onChange={onChange} value={todo} />
         <hr />
         <h2>To Do : {todos.length}</h2>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Button from "../utils/Button";
 import styled from "styled-components";
 //todo Input 받는 부분
@@ -7,7 +7,6 @@ const InputForm = styled.li`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  // background-color: #f0f0f0;
   padding: 10px;
   border-radius: 5px;
 `;
