@@ -12,19 +12,35 @@ const TodoList = () => {
     console.log(data);
   });
 
+  //localstorage
+
+  useEffect(() => {
+    const localData = localStorage.getItem("todos");
+    if (localData) {
+      const parsedDataList = JSON.parse(localData);
+      setData(parsedDataList);
+    }
+  }, []);
+
+  //새로운 데이터를 추가하는 함수
   const onCreate = (content) => {
     const created_date = new Date().getTime();
+
     const newItem = {
       value: content,
       id: created_date,
       isDone: false,
     };
+
+    const newData = [...data, newItem];
+    localStorage.setItem("todos", JSON.stringify(newData));
     setData([...data, newItem]);
   };
 
   const onDelete = (targetId, e) => {
     e.stopPropagation();
     const newTodoList = data.filter((it) => it.id !== targetId);
+    localStorage.setItem("todos", JSON.stringify(newTodoList));
     setData(newTodoList);
   };
 
@@ -40,6 +56,7 @@ const TodoList = () => {
       }
       return item;
     });
+    localStorage.setItem("todos", JSON.stringify(updatedData));
     setData(updatedData);
   };
 
