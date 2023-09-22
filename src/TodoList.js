@@ -7,7 +7,7 @@ import { styled } from "styled-components";
 const TodoList = () => {
   const [data, setData] = useState([]);
 
-  //콘솔창에서 data 확인용
+  //콘솔창에서 data 확인 기능
   useEffect(() => {
     console.log(data);
   });
