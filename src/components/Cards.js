@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 const TodoCard = styled.div`
   background-color: var(--card-color);
   color: var(--bg-color);
-  display: flex; /*todoElem 세로축 가운데 정렬*/
+  display: flex;
   align-items: center;
-  justify-content: space-between; /* item 사이 간격 균일하게 */
+  justify-content: space-between;
   height: 100px;
   margin: 5px 0;
   border-radius: 8px;
@@ -19,17 +19,21 @@ const TodoCard = styled.div`
 `;
 const TodoElem = styled.div`
   margin-left: 30px;
-  text-decoration: ${(props) => props.checked && "line-through"};
+  text-decoration: ${(props) => (props.checked ? "line-through" : "none")};
 `;
 function Cards({ todo, setTodo }) {
   const unCheckedTodo = todo.filter((element) => !element.checked);
   const checkedTodo = todo.filter((element) => element.checked);
+
   //todo state 에서 삭제
-  const handleOnClick = (index) => {
+  const handleOnClick = (element) => {
     const copyTodo = [...todo];
+    const index = copyTodo.findIndex((e) => e === element);
     copyTodo.splice(index, 1);
+
     setTodo(copyTodo);
   };
+  //element에 해당하는 index를 찾아서 checked 바꿔주고 state 변경
   const handleChecked = (element) => {
     const copyTodo = [...todo];
     const index = copyTodo.findIndex((e) => e === element);
@@ -49,7 +53,10 @@ function Cards({ todo, setTodo }) {
                 checked={element.checked}
                 onChange={() => handleChecked(element)}
               ></input>
-              <div className="todoDelete" onClick={() => handleOnClick(i)}>
+              <div
+                className="todoDelete"
+                onClick={() => handleOnClick(element)}
+              >
                 x
               </div>
             </TodoCard>
@@ -58,13 +65,16 @@ function Cards({ todo, setTodo }) {
         {checkedTodo.map((element, i) => {
           return (
             <TodoCard checked>
-              <TodoElem>{element.content}</TodoElem>
+              <TodoElem checked>{element.content}</TodoElem>
               <input
                 type="checkbox"
                 checked={element.checked}
                 onChange={() => handleChecked(element)}
               ></input>
-              <div className="todoDelete" onClick={() => handleOnClick(i)}>
+              <div
+                className="todoDelete"
+                onClick={() => handleOnClick(element)}
+              >
                 x
               </div>
             </TodoCard>

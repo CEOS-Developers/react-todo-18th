@@ -3,8 +3,13 @@ import { useState, useEffect } from "react";
 import Cards from "./components/Cards.js";
 import Clock from "./components/Clock.js";
 function App() {
-  const [todo, setTodo] = useState([]);
+  const storedTodo = JSON.parse(localStorage.getItem("data")) || [];
+  const [todo, setTodo] = useState(storedTodo);
   const [newTodo, setNewTodo] = useState("");
+  //todo 변경 시 localStorage 저장
+  useEffect(() => {
+    localStorage.setItem("data", JSON.stringify(todo));
+  }, [todo]);
   //input handler
   const handleInputChange = (e) => {
     setNewTodo(e.target.value);
