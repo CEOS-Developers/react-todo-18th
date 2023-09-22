@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React from "react";
 import { styled } from "styled-components";
 import { ImageButton } from "../atoms/ImageButton";
 import { Button } from "../atoms/Button";
@@ -7,30 +6,19 @@ import { Input } from "../atoms/Input";
 import logo from "../../image/galaxy-icon.svg";
 import { useRecoilState } from "recoil";
 import { nowTodoList } from "../../recoil/atom.ts";
+import useInput from "../../hooks/useTextInput";
 
 function TextInput() {
-  const [input, setInput] = useState("");
-  const [nowTodo, setnowTodoList] = useRecoilState(nowTodoList);
-  const onChange = (e) => {
-    setInput(e.target.value);
-  };
+  const { input, handleChange, handleKeyPress, setInput } = useInput(""); // 키 입력 할 때를 따로 커스텀 훅으로 분리함
+  const [nowTodo, setNowTodoList] = useRecoilState(nowTodoList);
+
   const buttonClick = () => {
     if (input.length < 5 || input.length > 30) {
       alert("할 일은 5자 이상 30자 이하로 작성해주세요.");
       return;
     }
-    setnowTodoList([...nowTodo, input]);
+    setNowTodoList([...nowTodo, input]);
     setInput("");
-  };
-  const handleOnKeyPress = (e) => {
-    if (e.key === "Enter") {
-      if (input.length < 5 || input.length > 30) {
-        alert("할 일은 5자 이상 30자 이하로 작성해주세요.");
-        return;
-      }
-      setnowTodoList([...nowTodo, input]);
-      setInput("");
-    }
   };
 
   return (
@@ -40,8 +28,8 @@ function TextInput() {
         type="text"
         placeholder="할 일을 입력하세요."
         value={input}
-        onChange={onChange}
-        onKeyPress={handleOnKeyPress}
+        onChange={handleChange}
+        onKeyPress={(e) => handleKeyPress(e, buttonClick)}
       />
       <Button onClick={buttonClick}>Submit</Button>
     </StyledInput>
