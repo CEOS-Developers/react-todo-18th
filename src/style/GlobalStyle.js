@@ -8,9 +8,11 @@ export const GlobalStyle = createGlobalStyle`
 
         // 사용할 색깔들
         --white: #FFFFFF;
+        --lightWhite: #FFFFFF80;
         --lightGray: #D4D4D4;
         --darkGray: 675F5F;
-        --yellow: 
+        --black: #000000;
+        
 
         // 색상 그라디언트 
         --gradient: radial-gradient(50% 50% at 50% 50%, rgba(18, 18, 18, 0) 0%, #202020 100%);

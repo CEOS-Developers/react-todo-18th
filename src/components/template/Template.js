@@ -1,13 +1,18 @@
-import React from "react";
-import { styled } from "styled-components";
+import React, { useState } from "react";
+import Header from "../organism/Header";
+import NowTodo from "../organism/NowTodo";
+import SolvedTodo from "../organism/SolvedTodo";
 
 function Template() {
+  // todoList 관리
+  const [nowTodo, setNowTodo] = useState(["공부해야해", "으아아악"]);
+  const [solvedTodo, setSolvedTodo] = useState(["공부하셈"]);
   return (
-    <div style={{ position: "absolute", top: "0", left: "0", zIndex: "999" }}>
-      ㄹㅇㅋㅋㅋㅋㅋㄹㅇㅋㅋㅋㅋㅋㄹㅇㅋㅋㅋㅋㅋㄹㅇㅋㅋㅋㅋㅋㄹㅇㅋㅋㅋㅋㅋㄹㅇㅋㅋㅋㅋㅋㄹㅇㅋㅋㅋㅋㅋ
-      ㄹㅇㅋㅋㅋㅋㅋㄹㅇㅋㅋㅋㅋㅋㄹㅇㅋㅋㅋㅋㅋㄹㅇㅋㅋㅋㅋㅋㄹㅇㅋㅋㅋㅋㅋ
-      ㄹㅇㅋㅋㅋㅋㅋㄹㅇㅋㅋㅋㅋㅋㄹㅇㅋㅋㅋㅋㅋㄹㅇㅋㅋㅋㅋㅋ
-    </div>
+    <>
+      <Header setTodo={setNowTodo} />
+      <NowTodo nowTodo={nowTodo} setSolvedTodo={setSolvedTodo} />
+      <SolvedTodo solvedTodo={solvedTodo} />
+    </>
   );
 }
 
