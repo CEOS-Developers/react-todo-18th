@@ -24,7 +24,7 @@ function SolvedTodo({ solvedTodo }) {
 const StyledSolvedTodo = styled.div`
   position: absolute;
   top: 170px;
-  right: 30px;
+  right: 100px;
 `;
 
 export default SolvedTodo;

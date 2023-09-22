@@ -33,7 +33,18 @@ const StyledItem = styled.div`
   height: 45px;
   background: var(--gradient);
   cursor: pointer;
-  ${(props) => (props.isSolved ? "" : "box-shadow: 0px 0px 20px white;")}
+  transition: 1s;
+  ${(props) =>
+    props.isSolved
+      ? ""
+      : `
+        box-shadow: 0px 0px 20px white;
+        &:hover {
+          background: yellow;
+          > ${Span} {
+            color: black; /* 호버 시 Span의 텍스트 색상을 검은색으로 변경 */
+          }
+        }`}
 `;
 const ButtonWrapper = styled.div`
   display: flex;
