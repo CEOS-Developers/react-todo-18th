@@ -1,9 +1,45 @@
+import styled from 'styled-components';
+import Header from './Header';
+import TodoList from './TodoList';
+
 function App() {
-	return (
-		<div>
-			<h1>18기 프론트 화이팅~ 푸하항ㅋ</h1>
-		</div>
-	);
+  return (
+    <Wrapper>
+      <TodoBox>
+        <Header />
+        <TodoList />
+      </TodoBox>
+    </Wrapper>
+  );
 }
+
+const Wrapper = styled.div`
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const TodoBox = styled.div`
+  background-color: red;
+  width: 50%;
+  height: 80%;
+
+  margin-top: 5%;
+  margin-bottom: 5%;
+
+  padding-top: 3%;
+  padding-bottom: 3%;
+
+  border-radius: 10px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 89, 0, 0.1) 36.57%,
+    rgba(239, 64, 90, 0.2) 100%
+  );
+  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.05);
+`;
 
 export default App;
