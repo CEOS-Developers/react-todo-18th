@@ -72,10 +72,16 @@ function TodoTemplate() {
     setPopupVisible(!popupVisible);
   };
 
+  //완료 항목 관련 코드
   const completedTasks = list.filter((task) => task.completed).length;
   const totalTasks = list.length;
 
   const progressText = `${completedTasks} / ${totalTasks}`;
+
+  let ratio = 0;
+  if (totalTasks !== 0) {
+    ratio = completedTasks / totalTasks;
+  }
 
   return (
     <>
@@ -90,14 +96,17 @@ function TodoTemplate() {
         <ProgressContainer style={{ display: popupVisible ? "flex" : "none" }}>
           <span class="progress">{progressText}</span>
           <div class="progress-div">
-            <div class="progress-bar"></div>
+            <div
+              class="progress-bar"
+              style={{ width: `${ratio * 100}%` }}
+            ></div>
           </div>
         </ProgressContainer>
         <TodoForm
           onSubmit={submitTodo}
           style={{ display: popupVisible ? "none" : "flex" }}
         >
-          <img class="todo-input-button" type="submit" src={plus}></img>
+          <button class="todo-input-button" type="submit"></button>
           <input
             class="todo-input"
             onChange={handleChange}
@@ -176,7 +185,7 @@ const TodoInputContainer = styled.section`
   position: relative;
   display: flex;
   flex-direction: row;
-  align-items: stretch;
+  align-items: center;
   justify-content: space-between;
 
   max-width: 60%;
@@ -190,17 +199,11 @@ const TodoInputContainer = styled.section`
     border-radius: 10px;
     border: none;
     margin: 0 10px;
-    width: 10%;
+    width: 30px;
+    height: 30px;
     background-color: transparent;
     outline: none;
     cursor: pointer;
-  }
-
-  .todo-form {
-    display: none;
-    flex-direction: row-reverse;
-    margin: 0 10px;
-    width: 85%;
   }
 
   .todo-input {
@@ -219,20 +222,6 @@ const TodoInputContainer = styled.section`
     white-space: normal;
     overflow: hidden;
     text-overflow: ellipsis;
-  }
-
-  .todo-input:focus {
-    transition: border-color 0.3s;
-    border-color: #00c013;
-  }
-
-  .todo-input-button {
-    width: 20px;
-    height: 20px;
-    background-color: transparent;
-    cursor: pointer;
-    border: none;
-    margin-left: 10px;
   }
 `;
 
@@ -296,8 +285,9 @@ const TodoForm = styled.form`
   }
 
   .todo-input-button {
-    width: 20px;
-    height: 20px;
+    width: 3dvh;
+    height: 3dvh;
+    background-image: url(${plus});
     background-size: contain;
     background-repeat: no-repeat;
     background-color: transparent;

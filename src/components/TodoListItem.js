@@ -2,12 +2,16 @@ import React from "react";
 import styled from "styled-components";
 
 import del from "../images/delete.png";
-import check from "../images/favicon.png";
+import check from "../images/checkbox.png";
+import done from "../images/donebox.png";
 
 function TodoListItem({ todo, deleteTodo, toggleTodo }) {
   return (
     <ListItem>
-      <IsDoneBox onClick={() => toggleTodo(todo.id)} src={check}></IsDoneBox>
+      <IsDoneBox
+        onClick={() => toggleTodo(todo.id)}
+        src={todo.completed ? done : check}
+      ></IsDoneBox>
       <TodoText onClick={() => toggleTodo(todo.id)}>{todo.title}</TodoText>
       <TodoDel src={del} onClick={() => deleteTodo(todo.id)} />
     </ListItem>
@@ -44,7 +48,7 @@ const TodoText = styled.span`
 const IsDoneBox = styled.img`
   width: 20px;
   height: 20px;
-  padding: 0;
+  padding-right: 1em;
   border: none;
   border-radius: 5px;
   background-color: transparent;
