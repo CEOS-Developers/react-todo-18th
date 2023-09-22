@@ -56,15 +56,17 @@ const IsDoneBox = styled.img`
 `;
 
 const TodoDel = styled.img`
-  width: 1.25em;
-  height: 1.25em;
-  padding: 0;
-  border: none;
-  border-radius: 0.3125em;
-  background-color: transparent;
-  cursor: pointer;
+  display: none;
 
   &:hover {
+    display: flex;
+    width: 1.25em;
+    height: 1.25em;
+    padding: 0;
+    border: none;
+    border-radius: 0.3125em;
+    background-color: transparent;
+    cursor: pointer;
     transition: display 0.5s;
   }
 `;
