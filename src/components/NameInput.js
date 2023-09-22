@@ -47,6 +47,7 @@ function NameInput({ onNameSubmit }) {
         />
       </form>
       <Button
+        onClick={handleSubmit}
         text="Submit"
         backgroundColor="#088395"
         textColor="white"

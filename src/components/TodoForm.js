@@ -38,6 +38,7 @@ function TodoForm({ onSubmit, onChange, value }) {
         />
       </form>
       <Button
+        onClick={onSubmit}
         text={"Add"}
         backgroundColor="#191D88"
         textColor="white"
