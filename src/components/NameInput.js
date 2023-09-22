@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Button from "../utils/Button";
 import styled from "styled-components";
 
-//name input 받는 부분
+//name input 받는 component
 
 const InputForm = styled.div`
   display: flex;

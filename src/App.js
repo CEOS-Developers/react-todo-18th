@@ -9,6 +9,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   height: 100vh;
+  width: 100vw;
   background-color: #f0f0f0;
   font-family: "omyu_pretty", sans-serif; // 폰트 지정
 `;
@@ -62,9 +63,11 @@ function App() {
       return;
     }
     setTodos((currentArray) => [todo, ...currentArray]);
+    //todos 배열에 입력받은 todo를 추가해줌
     setTodo("");
   };
 
+  //delete Btn 누르면 -> isDone 여부에 따라 todos, dones 배열을 update
   const deleteBtn = (index, isDone) => {
     if (isDone === true) {
       setDones(dones.filter((item, doneIndex) => index !== doneIndex));
@@ -73,6 +76,7 @@ function App() {
     }
   };
 
+  //move Btn을 누르면 -> isDone 여부에 따라 todos, dones 배열을 update
   const moveBtn = (index, isDone) => {
     if (isDone == false) {
       //todo-> done
@@ -86,6 +90,8 @@ function App() {
       setTodos((currentArray) => [itemToMove, ...currentArray]);
     }
   };
+
+  //name를 입력 -> name 저장
   const handleNameSubmit = (enteredName) => {
     setName(enteredName);
   };

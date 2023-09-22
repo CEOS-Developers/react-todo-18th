@@ -1,5 +1,6 @@
-import React from "react";
 import styled from "styled-components";
+
+//Button Component
 
 const StyledButton = styled.button`
   margin: 0.2rem;

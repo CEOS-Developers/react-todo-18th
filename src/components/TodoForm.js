@@ -1,4 +1,3 @@
-import React from "react";
 import Button from "../utils/Button";
 import styled from "styled-components";
 //todo Input 받는 부분

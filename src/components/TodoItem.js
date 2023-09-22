@@ -1,6 +1,7 @@
-import React from "react";
 import Button from "../utils/Button";
 import styled from "styled-components";
+
+//list에 들어갈 Item Component
 
 const TodoItemWrapper = styled.li`
   display: flex;
@@ -23,7 +24,7 @@ function TodoItem({ item, index, moveBtn, deleteBtn, isDone }) {
       <ButtonContainer>
         <Button
           onClick={() => moveBtn(index, isDone)}
-          text={isDone ? "⬆" : "⬇"}
+          text={isDone ? "⬆" : "⬇"} //버튼 위, 아래 나눠서 설정
           backgroundColor="#6aafe6"
           textColor="white"
           buttonSize="small"
