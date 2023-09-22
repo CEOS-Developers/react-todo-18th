@@ -2,10 +2,10 @@ import TodoItem from "./TodoItem";
 import { styled } from "styled-components";
 
 const ListContainer = ({ onEdit, onDelete, moveItem, data }) => {
-  // isDone 값이 false인 데이터만 필터링
+  // isDone 값이 false인 데이터만 필터링 (todo container에 띄우기)
   const todoData = data.filter((item) => !item.isDone);
 
-  // isDone 값이 true인 데이터만 필터링
+  // isDone 값이 true인 데이터만 필터링 (done container에 띄우기)
   const doneData = data.filter((item) => item.isDone);
 
   return (
@@ -55,6 +55,7 @@ const ListContainer = ({ onEdit, onDelete, moveItem, data }) => {
 
 export default ListContainer;
 
+//CSS
 const Container = styled.div`
   width: 20rem;
   height: 10rem;

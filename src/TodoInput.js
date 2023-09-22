@@ -4,6 +4,7 @@ import { styled } from "styled-components";
 const TodoInput = ({ onCreate }) => {
   const [content, setContent] = useState("");
 
+  //input_box에 엔터키 입력시 함수
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       if (e.nativeEvent.isComposing) return;
@@ -11,6 +12,7 @@ const TodoInput = ({ onCreate }) => {
     }
   };
 
+  //새로운 데이터가 입력될 때의 함수
   const handleSubmit = () => {
     if (content.trim() !== "") {
       onCreate(content);
@@ -37,6 +39,8 @@ const TodoInput = ({ onCreate }) => {
   );
 };
 export default TodoInput;
+
+//CSS
 
 const Container = styled.div`
   width: 380px;

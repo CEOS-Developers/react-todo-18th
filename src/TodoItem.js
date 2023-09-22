@@ -3,7 +3,7 @@ import { styled } from "styled-components";
 
 const TodoItem = ({ onEdit, onDelete, moveItem, value, id, isDone }) => {
   const [isEdit, setIsEdit] = useState(false);
-  const [localContent, setLocalContent] = useState(value);
+  const [localContent, setLocalContent] = useState(value); //수정된 데이터
 
   const toggleIsEdit = (e) => {
     e.stopPropagation();

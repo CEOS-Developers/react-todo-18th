@@ -7,13 +7,12 @@ import { styled } from "styled-components";
 const TodoList = () => {
   const [data, setData] = useState([]);
 
-  //콘솔창에서 data 확인 기능
+  //콘솔창에서 data 확인
   useEffect(() => {
     console.log(data);
   });
 
-  //localstorage
-
+  //localstorage 받아오기
   useEffect(() => {
     const localData = localStorage.getItem("todos");
     if (localData) {
@@ -37,6 +36,7 @@ const TodoList = () => {
     setData([...data, newItem]);
   };
 
+  //데이터 삭제 함수
   const onDelete = (targetId, e) => {
     e.stopPropagation();
     const newTodoList = data.filter((it) => it.id !== targetId);
@@ -44,6 +44,7 @@ const TodoList = () => {
     setData(newTodoList);
   };
 
+  //데이터 이동 함수
   const moveItem = (targetId) => {
     const updatedData = data.map((item) => {
       if (item.id === targetId) {
@@ -60,6 +61,7 @@ const TodoList = () => {
     setData(updatedData);
   };
 
+  //데이터 수정 함수
   const onEdit = (targetId, newContent) => {
     const editedData = data.map((it) =>
       it.id === targetId ? { ...it, value: newContent } : it
@@ -67,6 +69,7 @@ const TodoList = () => {
     localStorage.setItem("todos", JSON.stringify(editedData));
     setData(editedData);
   };
+
   return (
     <Container>
       <Clock />
