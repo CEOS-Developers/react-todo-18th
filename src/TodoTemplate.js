@@ -48,6 +48,14 @@ function TodoTemplate() {
     localStorage.setItem("list", JSON.stringify(deletedTodo));
   };
 
+  const toggleTodo = (id) => {
+    let toggledTodo = list.map((data) =>
+      data.id === id ? { ...data, completed: !data.completed } : data
+    );
+    setList(toggledTodo);
+    localStorage.setItem("list", JSON.stringify(toggledTodo));
+  };
+
   //form
 
   const submitTodo = (e) => {
@@ -106,6 +114,7 @@ function TodoTemplate() {
                   key={data.id}
                   todo={data}
                   deleteTodo={deleteTodo}
+                  toggleTodo={toggleTodo}
                 />
               )
             )}
@@ -116,7 +125,12 @@ function TodoTemplate() {
           <div class="done-list">
             {list.map((data) =>
               data.completed ? (
-                <TodoListItem key={data.id} todo={data} />
+                <TodoListItem
+                  key={data.id}
+                  todo={data}
+                  deleteTodo={deleteTodo}
+                  toggleTodo={toggleTodo}
+                />
               ) : (
                 <></>
               )
