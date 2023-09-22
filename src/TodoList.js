@@ -60,13 +60,25 @@ const TodoList = () => {
     setData(updatedData);
   };
 
+  const onEdit = (targetId, newContent) => {
+    const editedData = data.map((it) =>
+      it.id === targetId ? { ...it, value: newContent } : it
+    );
+    localStorage.setItem("todos", JSON.stringify(editedData));
+    setData(editedData);
+  };
   return (
     <Container>
       <Clock />
       <Title>To Do List</Title>
       <TodoInput onCreate={onCreate} />
       <div className="content_space">
-        <ListContainer onDelete={onDelete} moveItem={moveItem} data={data} />
+        <ListContainer
+          onEdit={onEdit}
+          onDelete={onDelete}
+          moveItem={moveItem}
+          data={data}
+        />
       </div>
     </Container>
   );

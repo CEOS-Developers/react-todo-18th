@@ -1,7 +1,7 @@
 import TodoItem from "./TodoItem";
 import { styled } from "styled-components";
 
-const ListContainer = ({ onDelete, moveItem, data }) => {
+const ListContainer = ({ onEdit, onDelete, moveItem, data }) => {
   // isDone 값이 false인 데이터만 필터링
   const todoData = data.filter((item) => !item.isDone);
 
@@ -24,6 +24,7 @@ const ListContainer = ({ onDelete, moveItem, data }) => {
                 key={it.id}
                 {...it}
                 onDelete={onDelete}
+                onEdit={onEdit}
                 moveItem={moveItem}
               />
             ))}
