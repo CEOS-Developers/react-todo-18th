@@ -39,7 +39,7 @@ const TodoItem = ({ onEdit, onDelete, moveItem, value, id, isDone }) => {
       <Datalist>
         {isEdit ? (
           <>
-            <textarea
+            <EditTextarea
               value={localContent}
               onClick={(e) => {
                 e.stopPropagation();
@@ -51,48 +51,73 @@ const TodoItem = ({ onEdit, onDelete, moveItem, value, id, isDone }) => {
           <>{value}</>
         )}
       </Datalist>
-      {isEdit ? (
-        <>
-          <button
-            onClick={(e) => {
-              handleQuitEdit(e);
-            }}
-          >
-            수정 취소
-          </button>
-          <button
-            onClick={(e) => {
-              handleCompleteEdit(e);
-            }}
-          >
-            수정 완료
-          </button>
-        </>
-      ) : (
-        <>
-          <button
-            onClick={(e) => {
-              toggleIsEdit(e);
-            }}
-          >
-            edit
-          </button>
-          <DeleteBtn
-            onClick={(e) => {
-              if (window.confirm(`Delete this task?`)) {
-                onDelete(id, e);
-              }
-            }}
-          >
-            🗑
-          </DeleteBtn>
-        </>
-      )}
+      <ButtonsContainer>
+        {isEdit ? (
+          <>
+            <EditingBtn
+              onClick={(e) => {
+                handleQuitEdit(e);
+              }}
+            >
+              수정 취소
+            </EditingBtn>
+            <EditingBtn
+              onClick={(e) => {
+                handleCompleteEdit(e);
+              }}
+            >
+              수정 완료
+            </EditingBtn>
+          </>
+        ) : (
+          <>
+            <EditBtn
+              onClick={(e) => {
+                toggleIsEdit(e);
+              }}
+            >
+              {" "}
+              edit
+            </EditBtn>
+            <DeleteBtn
+              onClick={(e) => {
+                if (window.confirm(`Delete this task?`)) {
+                  onDelete(id, e);
+                }
+              }}
+            >
+              🗑
+            </DeleteBtn>
+          </>
+        )}
+      </ButtonsContainer>
     </DataContainer>
   );
 };
 
 export default TodoItem;
+
+//CSS
+const EditBtn = styled.button`
+  opacity: 0;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 5px;
+  padding: 0.3rem 0.5rem;
+  cursor: pointer;
+  &:hover {
+    opacity: 1;
+  }
+`;
+
+const EditingBtn = styled.button`
+  border: none;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 5px;
+  padding: 0.3rem 0.5rem;
+  margin-left: 0.1rem;
+  cursor: pointer;
+`;
 
 const DeleteBtn = styled.button`
   opacity: 0;
@@ -106,6 +131,16 @@ const DeleteBtn = styled.button`
   }
 `;
 
+const EditTextarea = styled.textarea`
+  background-color: rgba(255, 255, 255, 0.8);
+  width: 80%;
+  height: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 8px;
+  font-size: 13px;
+`;
+
 const Datalist = styled.div`
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
@@ -116,4 +151,9 @@ const DataContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 12px;
+`;
+
+const ButtonsContainer = styled.div`
+  display: flex;
+  align-items: center;
 `;
