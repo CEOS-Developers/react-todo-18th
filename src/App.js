@@ -31,11 +31,11 @@ const Title = styled.h1`
 `;
 
 function App() {
+  //local storage에 name, todos 배열, dones 이 존재하면 초기값 설정해줌
   const [name, setName] = useState(
     () => JSON.parse(window.localStorage.getItem("name")) || ""
   );
   const [todo, setTodo] = useState("");
-
   const [todos, setTodos] = useState(
     () => JSON.parse(window.localStorage.getItem("todos")) || []
   );
@@ -43,6 +43,7 @@ function App() {
     () => JSON.parse(window.localStorage.getItem("dones")) || []
   );
 
+  //todos, dones, name의 변화가 일어날때마다 local storage에 저장
   useEffect(() => {
     window.localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
@@ -54,6 +55,7 @@ function App() {
   }, [name]);
 
   const onChange = (event) => setTodo(event.target.value);
+
   const onSubmit = (event) => {
     event.preventDefault();
     if (todo.trim() === "") {
@@ -98,6 +100,16 @@ function App() {
 
   const titleText = name ? `${name}'s To-Do List` : "To-Do List";
 
+  const [currentDate, setCurrentDate] = useState(new Date());
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentDate(new Date());
+    }, 1000); // 1초마다 현재 날짜 업데이트
+
+    return () => clearInterval(intervalId);
+  }, []);
+
   return (
     <Container>
       <TodoBox>
@@ -105,6 +117,12 @@ function App() {
           <Title>{titleText}</Title>
         ) : (
           <NameInput onNameSubmit={handleNameSubmit} />
+        )}
+
+        {name && (
+          <div>
+            <h3>{currentDate.toLocaleString()}</h3>
+          </div>
         )}
 
         <TodoForm onSubmit={onSubmit} onChange={onChange} value={todo} />
