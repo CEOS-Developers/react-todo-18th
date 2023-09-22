@@ -8,6 +8,7 @@ const TodoItemWrapper = styled.li`
   align-items: center;
   padding: 3px;
   margin-bottom: 3px;
+  font-family: "SUITE-Regular", sans-serif; // 폰트 지정
 `;
 
 const ButtonContainer = styled.div`

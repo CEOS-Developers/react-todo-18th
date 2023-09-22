@@ -8,7 +8,7 @@ const StyledButton = styled.button`
   display: inline-block;
   padding: 10px;
   border-radius: 5px;
-  font-family: "paybooc-Light", sans-serif;
+  font-family: "TheJamsil5Bold", sans-serif;
   text-decoration: none;
   font-weight: 600;
   transition: 0.25s;
@@ -26,6 +26,7 @@ function Button({ onClick, text, backgroundColor, textColor, buttonSize }) {
       style={{
         backgroundColor: backgroundColor,
         color: textColor,
+        //버튼 크기 선택 옵션
         width: buttonSize === "small" ? "40px" : "80px",
         height: buttonSize === "small" ? "40px" : "40px",
       }}

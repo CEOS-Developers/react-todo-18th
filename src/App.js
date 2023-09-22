@@ -10,6 +10,7 @@ const Container = styled.div`
   align-items: center;
   height: 100vh;
   background-color: #f0f0f0;
+  font-family: "omyu_pretty", sans-serif; // 폰트 지정
 `;
 
 const TodoBox = styled.div`
@@ -44,7 +45,6 @@ function App() {
   useEffect(() => {
     window.localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
-
   useEffect(() => {
     window.localStorage.setItem("dones", JSON.stringify(dones));
   }, [dones]);
@@ -56,6 +56,7 @@ function App() {
   const onSubmit = (event) => {
     event.preventDefault();
     if (todo.trim() === "") {
+      //input 예외처리
       setTodo("");
       alert("Please enter a input!");
       return;

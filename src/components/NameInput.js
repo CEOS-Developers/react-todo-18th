@@ -27,6 +27,7 @@ const InputField = styled.input`
   background-color: #f0f0f0;
   margin-right: 20px;
 `;
+
 function NameInput({ onNameSubmit }) {
   const [name, setName] = useState("");
 
@@ -40,7 +41,7 @@ function NameInput({ onNameSubmit }) {
       <form onSubmit={handleSubmit}>
         <InputField
           type="text"
-          placeholder="Enter your name"
+          placeholder="✏️Enter your name"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />

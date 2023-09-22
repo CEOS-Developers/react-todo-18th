@@ -38,7 +38,7 @@ function TodoForm({ onSubmit, onChange, value }) {
         />
       </form>
       <Button
-        text={"Add to Do"}
+        text={"Add"}
         backgroundColor="#191D88"
         textColor="white"
         buttonSize="large"
