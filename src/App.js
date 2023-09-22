@@ -1,9 +1,9 @@
+import React from "react";
+import Todo from "./components/Todo";
+import "./index.css";
+
 function App() {
-	return (
-		<div>
-			<h1>18기 프론트 화이팅~ 푸하항ㅋ</h1>
-		</div>
-	);
+  return <Todo />;
 }
 
 export default App;
