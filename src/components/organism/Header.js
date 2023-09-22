@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { styled } from "styled-components";
 import TextInput from "../molecules/TextInput";
 import { Span } from "../atoms/Span";
 
-function Header() {
+function Header({}) {
   return (
     <StyledHeader>
-      <TextInput placeholder="할 일을 입력해주세요" />
+      <TextInput />
       <Span>"Carl Seagan - 소멸은 법칙이다."</Span>
     </StyledHeader>
   );

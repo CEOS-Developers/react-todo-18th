@@ -3,9 +3,12 @@ import { H1 } from "../atoms/H1";
 import { Span } from "../atoms/Span";
 import ToDoItem from "../molecules/ToDoItem";
 import { styled } from "styled-components";
+import { useRecoilValue, useRecoilState } from "recoil";
+import { nowTodoList, solvedTodoList } from "../../recoil/atom.ts";
 
-function NowTodo({ nowTodo, setSolvedTodo }) {
-  console.log(nowTodo);
+function NowTodo() {
+  const nowTodo = useRecoilValue(nowTodoList);
+  const [solvedToDo, setSolvedTodo] = useRecoilState(solvedTodoList);
   return (
     <StyledNowTodo>
       <H1>✔ 지금 당장 해결하세요.</H1>
@@ -13,8 +16,13 @@ function NowTodo({ nowTodo, setSolvedTodo }) {
         총 {nowTodo.length} 개의 할 일이 있어요.
       </Span>
       <StyledList>
-        {nowTodo.map((todo) => (
-          <ToDoItem todo={todo} setSolvedTodo={setSolvedTodo} />
+        {nowTodo.map((todo, idx) => (
+          <ToDoItem
+            isSolved={false}
+            todo={todo}
+            setSolvedTodo={setSolvedTodo}
+            key={idx}
+          />
         ))}
       </StyledList>
     </StyledNowTodo>
@@ -25,11 +33,11 @@ function NowTodo({ nowTodo, setSolvedTodo }) {
 export const StyledList = styled.div`
   display: flex;
   margin-top: 20px;
-  overflow-x: visible;
+  overflow: scroll;
   flex-direction: column;
   align-items: start;
-  gap: 30px;
-  height: 300px;
+  gap: 15px;
+  height: 500px;
 `;
 
 const StyledNowTodo = styled.div`
