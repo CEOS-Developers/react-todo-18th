@@ -6,8 +6,9 @@ const TodoItemWrapper = styled.li`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 3px;
-  margin-bottom: 3px;
+  padding: 0.3rem;
+  margin-bottom: 0.3rem;
+  font-size: 1.5rem;
   font-family: "SUITE-Regular", sans-serif; // 폰트 지정
 `;
 

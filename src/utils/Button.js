@@ -2,12 +2,12 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledButton = styled.button`
-  margin: 2px;
+  margin: 0.2rem;
   position: relative;
   border: none;
   display: inline-block;
-  padding: 10px;
-  border-radius: 5px;
+  padding: 1rem;
+  border-radius: 0.5rem;
   font-family: "TheJamsil5Bold", sans-serif;
   text-decoration: none;
   font-weight: 600;

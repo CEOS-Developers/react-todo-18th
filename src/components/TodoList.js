@@ -3,7 +3,7 @@ import TodoItem from "./TodoItem";
 import styled from "styled-components";
 //list 이동 관리
 const ListContainer = styled.div`
-  height: 200px;
+  height: 20rem;
   overflow-y: auto;
   // 내용이 넘치면 스크롤바 나타나게
 `;

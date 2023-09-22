@@ -15,18 +15,18 @@ const Container = styled.div`
 
 const TodoBox = styled.div`
   background-color: white;
-  height: 700px;
-  width: 300px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  padding: 20px;
+  height: 70rem;
+  width: 30rem;
+  border-radius: 0.8rem;
+  box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.2);
+  padding: 2rem;
 `;
 
 const Title = styled.h1`
   text-align: center;
-  font-size: 24px;
+  font-size: 2.4rem;
   font-weight: 800;
-  margin-bottom: 10px;
+  margin-bottom: 1rem;
 `;
 
 function App() {

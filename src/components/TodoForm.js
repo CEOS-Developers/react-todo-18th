@@ -7,23 +7,23 @@ const InputForm = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
-  border-radius: 5px;
+  padding: 1rem;
+  border-radius: 1rem;
 `;
 const InputField = styled.input`
   flex-grow: 1;
   border: none;
-  padding: 3px;
+  padding: 0.3rem;
   outline: none;
-  width: 150px;
-  height: 40px;
-  font-size: 15px;
+  width: 15rem;
+  height: 4rem;
+  font-size: 1.5rem;
   border: 0;
-  border-radius: 15px;
+  border-radius: 1.5rem;
   outline: none;
-  padding-left: 10px;
+  padding-left: 1rem;
   background-color: #f0f0f0;
-  margin-right: 20px;
+  margin-right: 2rem;
 `;
 function TodoForm({ onSubmit, onChange, value }) {
   return (
