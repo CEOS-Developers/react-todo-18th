@@ -24,6 +24,40 @@ function TodoTemplate() {
     setPopupVisible(!popupVisible);
   };
 
+  //todo
+  const initialTodoData = localStorage.getItem("list")
+    ? JSON.parse(localStorage.getItem("list"))
+    : [];
+
+  const [list, setList] = useState(initialTodoData);
+  const [value, setValue] = useState("");
+
+  const getTodo = (todo) => {
+    const newTodo = {
+      id: Date.now(),
+      title: todo,
+      completed: false,
+    };
+    setList([...list, newTodo]);
+    localStorage.setItem("list", JSON.stringify([...list, newTodo]));
+  };
+
+  //form
+
+  const submitTodo = (e) => {
+    e.preventDefault();
+
+    if (value.trim()) {
+      getTodo(value);
+      setValue("");
+    } else {
+      alert("할 일을 입력하세요!");
+    }
+  };
+  const handleChange = (e) => {
+    setValue(e.target.value);
+  };
+
   return (
     <>
       <GlobalStyle />
@@ -40,22 +74,44 @@ function TodoTemplate() {
             <div class="progress-bar"></div>
           </div>
         </ProgressContainer>
-        <TodoForm style={{ display: popupVisible ? "none" : "flex" }}>
+        <TodoForm
+          onSubmit={submitTodo}
+          style={{ display: popupVisible ? "none" : "flex" }}
+        >
           <img class="todo-input-button" type="submit" src={plus}></img>
-          <input class="todo-input" placeholder="" />
+          <input
+            class="todo-input"
+            onChange={handleChange}
+            value={value}
+            placeholder=""
+          />
         </TodoForm>
       </TodoInputContainer>
 
       <TodoContainer>
         <article class="list-contents">
           <h3 class="list-title">TODO</h3>
-          <ul class="todo-list">
-            <TodoListItem />
-          </ul>
+          <div class="todo-list">
+            {list.map((data) =>
+              data.completed ? (
+                <></>
+              ) : (
+                <TodoListItem key={data.id} todo={data} />
+              )
+            )}
+          </div>
         </article>
         <article class="list-contents">
           <h3 class="list-title">DONE</h3>
-          <ul class="done-list"></ul>
+          <div class="done-list">
+            {list.map((data) =>
+              data.completed ? (
+                <TodoListItem key={data.id} todo={data} />
+              ) : (
+                <></>
+              )
+            )}
+          </div>
         </article>
       </TodoContainer>
     </>

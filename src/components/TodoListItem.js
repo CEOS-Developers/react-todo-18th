@@ -2,11 +2,13 @@ import React from "react";
 import styled from "styled-components";
 
 import del from "../images/delete.png";
+import check from "../images/favicon.png";
 
-function TodoListItem() {
+function TodoListItem({ todo }) {
   return (
     <ListItem>
-      <TodoText>testtest</TodoText>
+      <IsDoneBox src={check}></IsDoneBox>
+      <TodoText>{todo.title}</TodoText>
       <TodoDel src={del} />
     </ListItem>
   );
@@ -14,7 +16,7 @@ function TodoListItem() {
 
 export default TodoListItem;
 
-const ListItem = styled.li`
+const ListItem = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -39,17 +41,26 @@ const TodoText = styled.span`
   text-overflow: ellipsis;
 `;
 
+const IsDoneBox = styled.img`
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: none;
+  border-radius: 5px;
+  background-color: transparent;
+  cursor: pointer;
+`;
+
 const TodoDel = styled.img`
-  display: none;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: none;
+  border-radius: 5px;
+  background-color: transparent;
+  cursor: pointer;
+
   &:hover {
-    display: flex;
-    width: 20px;
-    height: 20px;
-    padding: 0;
-    border: none;
-    border-radius: 5px;
-    background-color: transparent;
-    cursor: pointer;
     transition: display 0.5s;
   }
 `;
