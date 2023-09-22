@@ -24,7 +24,7 @@ const TodoBox = styled.div`
 
 const Title = styled.h1`
   text-align: center;
-  font-size: 2.4rem;
+  font-size: 3rem;
   font-weight: 800;
   margin-bottom: 1rem;
 `;

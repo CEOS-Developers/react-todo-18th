@@ -23,7 +23,7 @@ function TodoItem({ item, index, moveBtn, deleteBtn, isDone }) {
       <ButtonContainer>
         <Button
           onClick={() => moveBtn(index, isDone)}
-          text="↕️"
+          text={isDone ? "⬆" : "⬇"}
           backgroundColor="#6aafe6"
           textColor="white"
           buttonSize="small"

@@ -27,8 +27,8 @@ function Button({ onClick, text, backgroundColor, textColor, buttonSize }) {
         backgroundColor: backgroundColor,
         color: textColor,
         //버튼 크기 선택 옵션
-        width: buttonSize === "small" ? "40px" : "80px",
-        height: buttonSize === "small" ? "40px" : "40px",
+        width: buttonSize === "small" ? "4rem" : "8rem",
+        height: buttonSize === "small" ? "4rem" : "4rem",
       }}
     >
       {text}
