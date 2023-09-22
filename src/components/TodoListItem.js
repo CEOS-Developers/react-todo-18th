@@ -31,10 +31,6 @@ const ListItem = styled.div`
   font-family: "SUITE-Regular";
   font-size: 0.75em;
   cursor: pointer;
-
-  &:hover {
-    color: #4caf50;
-  }
 `;
 
 const TodoText = styled.span`
@@ -56,17 +52,11 @@ const IsDoneBox = styled.img`
 `;
 
 const TodoDel = styled.img`
-  display: none;
-
-  &:hover {
-    display: flex;
-    width: 1.25em;
-    height: 1.25em;
-    padding: 0;
-    border: none;
-    border-radius: 0.3125em;
-    background-color: transparent;
-    cursor: pointer;
-    transition: display 0.5s;
-  }
+  width: 1.25em;
+  height: 1.25em;
+  padding: 0;
+  border: none;
+  border-radius: 0.3125em;
+  background-color: transparent;
+  cursor: pointer;
 `;
