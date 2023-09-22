@@ -1,4 +1,5 @@
 import TodoItem from "./TodoItem";
+import { styled } from "styled-components";
 
 const ListContainer = ({ onDelete, moveItem, data }) => {
   // isDone 값이 false인 데이터만 필터링
@@ -9,9 +10,13 @@ const ListContainer = ({ onDelete, moveItem, data }) => {
 
   return (
     <div className="ListContainer">
-      <div className="todoContainer">
-        <h1>"Todo 🟡"</h1>
-        <h2>You have {todoData.length} things to do.</h2>
+      <Container>
+        <TitleContainer>
+          <Subtitle>"Todo 🟡"</Subtitle>
+          <CountTitle>
+            You have <CountNum>{todoData.length}</CountNum> things to do.
+          </CountTitle>
+        </TitleContainer>
         <div>
           {todoData &&
             todoData.map((it) => (
@@ -23,10 +28,14 @@ const ListContainer = ({ onDelete, moveItem, data }) => {
               />
             ))}
         </div>
-      </div>
-      <div className="doneContainer">
-        <h1>"Done 🔵"</h1>
-        <h2>You've done {doneData.length} things.</h2>
+      </Container>
+      <Container>
+        <TitleContainer>
+          <Subtitle>"Done 🔵"</Subtitle>
+          <CountTitle>
+            You have <CountNum>{doneData.length}</CountNum> things to do.
+          </CountTitle>
+        </TitleContainer>
         <div>
           {doneData &&
             doneData.map((it) => (
@@ -38,9 +47,41 @@ const ListContainer = ({ onDelete, moveItem, data }) => {
               />
             ))}
         </div>
-      </div>
+      </Container>
     </div>
   );
 };
 
 export default ListContainer;
+
+const Container = styled.div`
+  width: 20rem;
+  height: 10rem;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 2rem;
+  padding-bottom: 1rem;
+  margin-bottom: 2.5rem;
+  border-radius: 20px;
+  overflow-y: auto;
+  max-height: 130px;
+`;
+
+const TitleContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+`;
+
+const Subtitle = styled.div`
+  font-size: 20px;
+`;
+
+const CountTitle = styled.div`
+  font-size: 13px;
+  color: grey;
+`;
+
+const CountNum = styled.span`
+  color: black;
+`;

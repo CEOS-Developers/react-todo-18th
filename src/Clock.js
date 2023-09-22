@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { styled } from "styled-components";
 
 const Clock = () => {
   const [time, setTime] = useState(new Date());
@@ -18,10 +19,16 @@ const Clock = () => {
   };
 
   return (
-    <div className="Clock">
+    <SectionName>
       <h1>{time.toLocaleTimeString([], timeOptions)}</h1>
-    </div>
+    </SectionName>
   );
 };
 
 export default Clock;
+
+const SectionName = styled.div`
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+`;

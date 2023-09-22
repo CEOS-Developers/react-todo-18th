@@ -2,6 +2,7 @@ import Clock from "./Clock";
 import TodoInput from "./TodoInput";
 import ListContainer from "./ListContainer";
 import { useEffect, useState } from "react";
+import { styled } from "styled-components";
 
 const TodoList = () => {
   const [data, setData] = useState([]);
@@ -30,7 +31,7 @@ const TodoList = () => {
   const moveItem = (targetId) => {
     const updatedData = data.map((item) => {
       if (item.id === targetId) {
-        if (window.confirm(`Move this task?`)) {
+        if (window.confirm(`일을 이동시키겠습니까?`)) {
           return {
             ...item,
             isDone: !item.isDone,
@@ -43,15 +44,36 @@ const TodoList = () => {
   };
 
   return (
-    <div className="TodoList">
+    <Container>
       <Clock />
-      <div className="title">To Do List</div>
+      <Title>To Do List</Title>
       <TodoInput onCreate={onCreate} />
       <div className="content_space">
         <ListContainer onDelete={onDelete} moveItem={moveItem} data={data} />
       </div>
-    </div>
+    </Container>
   );
 };
 
 export default TodoList;
+
+//CSS
+const Container = styled.div`
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 100px;
+  padding-top: 10px;
+  padding-bottom: 140px;
+  margin-top: 0px;
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: 600px;
+  overflow: hidden;
+`;
+
+const Title = styled.div`
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+  margin: 0 auto;
+`;
