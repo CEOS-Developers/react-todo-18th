@@ -26,7 +26,7 @@ function TextInput() {
       <ImageButton src={logo} alt="로고" />
       <Input
         type="text"
-        placeholder="할 일을 입력하세요."
+        placeholder="화면 중앙을 드래그하거나 포커스 한 후 마우스 휠을 움직여보세요."
         value={input}
         onChange={handleChange}
         onKeyPress={(e) => handleKeyPress(e, buttonClick)}
