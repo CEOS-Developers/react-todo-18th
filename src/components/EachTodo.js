@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { setTodo } from "../hooks/setTodo";
 
-export default function EachTodo({ index, todo, todoLists, setTodoLists }) {
+function EachTodo({ index, todo, todoLists, setTodoLists }) {
+  console.log(index);
   const [checkState, setCheckState] = useState(todo.checked);
   const checkboxChanged = (e) => {
     const updatedTodoLists = [...todoLists];
@@ -66,3 +67,5 @@ const DeleteBtn = styled.div`
   font-size: 4rem;
   color: gray;
 `;
+
+export default React.memo(EachTodo);
