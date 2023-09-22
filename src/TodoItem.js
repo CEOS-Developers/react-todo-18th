@@ -144,6 +144,7 @@ const EditTextarea = styled.textarea`
 const Datalist = styled.div`
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+  word-break: break-all;
 `;
 
 const DataContainer = styled.div`
