@@ -25,11 +25,11 @@ const ListItem = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  padding: 3px 0px;
+  padding: 0.1875em 0;
   transition: color 0.3s;
   color: #000;
   font-family: "SUITE-Regular";
-  font-size: 12px;
+  font-size: 0.75em;
   cursor: pointer;
 
   &:hover {
@@ -46,21 +46,21 @@ const TodoText = styled.span`
 `;
 
 const IsDoneBox = styled.img`
-  width: 20px;
-  height: 20px;
+  width: 1.25em;
+  height: 1.25em;
   padding-right: 1em;
   border: none;
-  border-radius: 5px;
+  border-radius: 0.3125em;
   background-color: transparent;
   cursor: pointer;
 `;
 
 const TodoDel = styled.img`
-  width: 20px;
-  height: 20px;
+  width: 1.25em;
+  height: 1.25em;
   padding: 0;
   border: none;
-  border-radius: 5px;
+  border-radius: 0.3125em;
   background-color: transparent;
   cursor: pointer;
 

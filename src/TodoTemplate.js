@@ -165,7 +165,7 @@ const TopContent = styled.section`
   justify-content: space-between;
 
   max-width: 60%;
-  margin: 20px auto;
+  margin: 1.25em auto;
 
   .todo-title {
     margin: 0;
@@ -190,17 +190,17 @@ const TodoInputContainer = styled.section`
 
   max-width: 60%;
 
-  border-radius: 34px;
-  border: 3px solid #7adb84;
-  padding: 5px 10px;
-  margin: 10px auto;
+  border-radius: 2.125em;
+  border: 0.1875em solid #7adb84;
+  padding: 0.3125em 0.625em;
+  margin: 0.625em auto;
 
   .popup-button {
-    border-radius: 10px;
+    border-radius: 0.625em;
     border: none;
-    margin: 0 10px;
-    width: 30px;
-    height: 30px;
+    margin: 0 0.625em;
+    width: 1.875em;
+    height: 1.875em;
     background-color: transparent;
     outline: none;
     cursor: pointer;
@@ -214,7 +214,7 @@ const TodoInputContainer = styled.section`
 
     font-family: "SUITE-Regular";
     font-weight: 500;
-    font-size: 10px;
+    font-size: 0.625em;
     color: #038c11;
 
     width: 100%;
@@ -226,7 +226,6 @@ const TodoInputContainer = styled.section`
 `;
 
 const ProgressContainer = styled.article`
-  /* display: ${(props) => (props.isVisible ? "block" : "none")}; */
   flex-direction: row-reverse;
   align-items: center;
   justify-content: space-between;
@@ -234,21 +233,21 @@ const ProgressContainer = styled.article`
 
   .progress-div {
     width: 80%;
-    height: 20px;
+    height: 1.25em;
     background-color: rgba(221, 221, 221, 0.7);
-    border-radius: 5px;
+    border-radius: 0.3125em;
   }
 
   .progress-bar {
     width: 0;
-    height: 20px;
-    border-radius: 5px;
+    height: 1.25em;
+    border-radius: 0.3125em;
     background-color: #7adb84;
     transition: width 0.3s ease-in-out;
   }
 
   .progress {
-    margin: 0 15px 0 10px;
+    margin: 0 15px 0 0.625em;
     width: 15%;
     font-family: "SUITE-Regular";
     font-weight: 900;
@@ -261,9 +260,8 @@ const ProgressContainer = styled.article`
 `;
 
 const TodoForm = styled.form`
-  /* display: ${(props) => (props.isVisible ? "flex" : "none")}; */
   flex-direction: row-reverse;
-  margin: 0 10px;
+  margin: 0 0.625em;
   width: 85%;
 
   .todo-input {
@@ -271,11 +269,11 @@ const TodoForm = styled.form`
     outline: none;
     background-color: transparent;
     border-color: rgba(221, 221, 221, 0.7);
-    border-width: 0 0 2px;
+    border-width: 0 0 0.25em;
 
     font-family: "SUITE-Regular";
     font-weight: 500;
-    font-size: 10px;
+    font-size: 0.625em;
     color: #038c11;
   }
 
@@ -285,15 +283,15 @@ const TodoForm = styled.form`
   }
 
   .todo-input-button {
-    width: 3dvh;
-    height: 3dvh;
+    width: 1.875em;
+    height: 1.875em;
     background-image: url(${plus});
     background-size: contain;
     background-repeat: no-repeat;
     background-color: transparent;
     cursor: pointer;
     border: none;
-    margin-left: 10px;
+    margin-left: 0.625em;
   }
 `;
 
@@ -302,27 +300,26 @@ const TodoContainer = styled.section`
   grid-template-columns: 1fr 1fr;
   justify-content: center;
 
-  min-height: 300px;
+  min-height: 18.75em;
   max-width: 60%;
 
-  border-radius: 34px;
-  border: 3px solid #7adb84;
-  padding: 5px 10px;
-  margin: 10px auto;
+  border-radius: 2.125em;
+  border: 0.1875em solid #7adb84;
+  padding: 0.3125em 0.625em;
+  margin: 0.625em auto;
 
   position: relative;
 
   .list-title {
-    margin: 10px 0 10px 5px;
+    margin: 0.625em 0 0.625em 0.3125em;
     font-family: "Pretendard-Regular";
     color: #00c013;
   }
 
-  /* ul 부분 */
   .todo-list,
   .done-list {
     list-style: none;
-    margin: 0 0 10px;
-    padding: 0px 30px 0px 10px;
+    margin: 0 0 0.625em;
+    padding: 0 1.875em 0 0.625em;
   }
 `;
