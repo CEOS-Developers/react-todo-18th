@@ -34,7 +34,7 @@ const ListContainer = ({ onEdit, onDelete, moveItem, data }) => {
         <TitleContainer>
           <Subtitle>"Done 🔵"</Subtitle>
           <CountTitle>
-            You have <CountNum>{doneData.length}</CountNum> things to do.
+            You completed <CountNum>{doneData.length}</CountNum> things.
           </CountTitle>
         </TitleContainer>
         <div>
