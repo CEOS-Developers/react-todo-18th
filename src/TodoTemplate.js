@@ -42,6 +42,12 @@ function TodoTemplate() {
     localStorage.setItem("list", JSON.stringify([...list, newTodo]));
   };
 
+  const deleteTodo = (id) => {
+    let deletedTodo = list.filter((data) => data.id !== id);
+    setList(deletedTodo);
+    localStorage.setItem("list", JSON.stringify(deletedTodo));
+  };
+
   //form
 
   const submitTodo = (e) => {
@@ -96,7 +102,11 @@ function TodoTemplate() {
               data.completed ? (
                 <></>
               ) : (
-                <TodoListItem key={data.id} todo={data} />
+                <TodoListItem
+                  key={data.id}
+                  todo={data}
+                  deleteTodo={deleteTodo}
+                />
               )
             )}
           </div>

@@ -4,12 +4,12 @@ import styled from "styled-components";
 import del from "../images/delete.png";
 import check from "../images/favicon.png";
 
-function TodoListItem({ todo }) {
+function TodoListItem({ todo, deleteTodo }) {
   return (
     <ListItem>
       <IsDoneBox src={check}></IsDoneBox>
       <TodoText>{todo.title}</TodoText>
-      <TodoDel src={del} />
+      <TodoDel src={del} onClick={() => deleteTodo(todo.id)} />
     </ListItem>
   );
 }
