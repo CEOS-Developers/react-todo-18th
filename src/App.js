@@ -1,9 +1,13 @@
+import React from "react";
+import styled from "styled-components";
+import TodoTemplate from "./TodoTemplate";
+
 function App() {
-	return (
-		<div>
-			<h1>18기 프론트 화이팅~ 푸하항ㅋ</h1>
-		</div>
-	);
+  return (
+    <>
+      <TodoTemplate />
+    </>
+  );
 }
 
 export default App;
