@@ -2,7 +2,7 @@ import "../App";
 import styled, { css } from "styled-components";
 import { useEffect, useState } from "react";
 const TodoCard = styled.div`
-  background-color: var(--card-color);
+  background-color: ${(props) => props.color};
   color: var(--bg-color);
   display: flex;
   align-items: center;
@@ -22,15 +22,23 @@ const TodoElem = styled.div`
   text-decoration: ${(props) => (props.checked ? "line-through" : "none")};
 `;
 function Cards({ todo, setTodo }) {
+  //checked card 구분
   const unCheckedTodo = todo.filter((element) => !element.checked);
   const checkedTodo = todo.filter((element) => element.checked);
+
+  // const [cardColor, setCardColor] = useState([
+  //   "#ECECEC",
+  //   "#A6DDF5",
+  //   "#F5AEAE",
+  //   "#87DDCE",
+  //   "#F5EDB6",
+  // ]);
 
   //todo state 에서 삭제
   const handleOnClick = (element) => {
     const copyTodo = [...todo];
     const index = copyTodo.findIndex((e) => e === element);
     copyTodo.splice(index, 1);
-
     setTodo(copyTodo);
   };
   //element에 해당하는 index를 찾아서 checked 바꿔주고 state 변경
@@ -46,7 +54,7 @@ function Cards({ todo, setTodo }) {
       <div className="todoList">
         {unCheckedTodo.map((element, i) => {
           return (
-            <TodoCard>
+            <TodoCard color={element.color}>
               <TodoElem>{element.content}</TodoElem>
               <input
                 type="checkbox"
@@ -64,7 +72,7 @@ function Cards({ todo, setTodo }) {
         })}
         {checkedTodo.map((element, i) => {
           return (
-            <TodoCard checked>
+            <TodoCard checked color={element.color}>
               <TodoElem checked>{element.content}</TodoElem>
               <input
                 type="checkbox"
