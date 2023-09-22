@@ -5,23 +5,25 @@ import InputTodo from "./components/inputTodo";
 import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
+  html{ font-size: 62.5%; }
+
   main {
     display: flex;
     flex-direction: column;
-    width: 400px;
-    height: 620px;
-    margin: 30px auto;
-    padding: 25px;
+    width: 40rem;
+    height: 62rem;
+    margin: 3rem auto;
+    padding: 2.5rem;
     background-color: #ffffff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 15px;
+    box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.1);
+    border-radius: 1.5rem;
   }
 
   h1 {
-    font-size: 35px;
+    font-size: 3.5rem;
     color: #000000;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 2rem;
   }
 `;
 
