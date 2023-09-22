@@ -19,11 +19,16 @@ const StyledButton = styled.button`
   }
 `;
 
-function Button({ onClick, text, backgroundColor, textColor }) {
+function Button({ onClick, text, backgroundColor, textColor, buttonSize }) {
   return (
     <StyledButton
       onClick={onClick}
-      style={{ backgroundColor: backgroundColor, color: textColor }}
+      style={{
+        backgroundColor: backgroundColor,
+        color: textColor,
+        width: buttonSize === "small" ? "40px" : "80px",
+        height: buttonSize === "small" ? "40px" : "40px",
+      }}
     >
       {text}
     </StyledButton>

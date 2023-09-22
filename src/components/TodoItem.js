@@ -24,12 +24,14 @@ function TodoItem({ item, index, moveBtn, deleteBtn, isDone }) {
           text="↕️"
           backgroundColor="#6aafe6"
           textColor="white"
+          buttonSize="small"
         />
         <Button
           onClick={() => deleteBtn(index, isDone)}
           text="x"
           backgroundColor="red"
           textColor="white"
+          buttonSize="small"
         />
       </ButtonContainer>
     </TodoItemWrapper>

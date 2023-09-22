@@ -11,3 +11,15 @@
 body{
     margin:0
 }
+
+body {
+    width: 100vw;
+    height: 100vh;
+  
+    /* Center Container */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+  }
+  

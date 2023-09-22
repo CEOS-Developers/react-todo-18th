@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import Button from "../utils/Button";
 import styled from "styled-components";
 
-const InputForm = styled.li`
+//name input 받는 부분
+
+const InputForm = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   padding: 10px;
   border-radius: 5px;
@@ -16,7 +18,7 @@ const InputField = styled.input`
   padding: 3px;
   outline: none;
   width: 150px;
-  height: 32px;
+  height: 40px;
   font-size: 15px;
   border: 0;
   border-radius: 15px;
@@ -36,16 +38,19 @@ function NameInput({ onNameSubmit }) {
   return (
     <InputForm>
       <form onSubmit={handleSubmit}>
-        <label>
-          <InputField
-            type="text"
-            placeholder="Enter your name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        </label>
-        <Button text="Submit" backgroundColor="#088395" textColor="white" />
+        <InputField
+          type="text"
+          placeholder="Enter your name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
       </form>
+      <Button
+        text="Submit"
+        backgroundColor="#088395"
+        textColor="white"
+        buttonSize="large"
+      />
     </InputForm>
   );
 }

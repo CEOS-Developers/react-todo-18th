@@ -3,6 +3,7 @@ import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList";
 import styled from "styled-components";
 import NameInput from "./components/NameInput";
+
 const Container = styled.div`
   display: flex;
   justify-content: center;
@@ -24,7 +25,7 @@ const Title = styled.h1`
   text-align: center;
   font-size: 24px;
   font-weight: 800;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 `;
 
 function App() {
@@ -72,11 +73,13 @@ function App() {
   };
 
   const moveBtn = (index, isDone) => {
-    if (isDone === false) {
+    if (isDone == false) {
+      //todo-> done
       const itemToMove = todos[index];
       setTodos(todos.filter((item, todoIndex) => index !== todoIndex));
       setDones((currentArray) => [itemToMove, ...currentArray]);
     } else {
+      //done->todo
       const itemToMove = dones[index];
       setDones(dones.filter((item, doneIndex) => index !== doneIndex));
       setTodos((currentArray) => [itemToMove, ...currentArray]);
@@ -98,6 +101,7 @@ function App() {
         )}
 
         <TodoForm onSubmit={onSubmit} onChange={onChange} value={todo} />
+
         <hr />
         <h2>To Do : {todos.length}</h2>
         <TodoList
@@ -106,6 +110,7 @@ function App() {
           deleteBtn={deleteBtn}
           isDone={false}
         />
+
         <hr />
         <h2> Done : {dones.length}</h2>
         <TodoList
