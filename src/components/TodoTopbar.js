@@ -67,7 +67,7 @@ function TodoTopbar({ list, setList, value, setValue }) {
 
       <TodoInputContainer>
         <img class="popup-button" src={input} onClick={togglePopup}></img>
-        <ProgressContainer style={{ display: popupVisible ? "flex" : "none" }}>
+        <ProgressContainer popupVisible={popupVisible}>
           <span class="progress">{progressText}</span>
           <div class="progress-div">
             <div
@@ -76,10 +76,7 @@ function TodoTopbar({ list, setList, value, setValue }) {
             ></div>
           </div>
         </ProgressContainer>
-        <TodoForm
-          onSubmit={submitTodo}
-          style={{ display: popupVisible ? "none" : "flex" }}
-        >
+        <TodoForm onSubmit={submitTodo} popupVisible={popupVisible}>
           <button class="todo-input-button" type="submit"></button>
           <input
             class="todo-input"
@@ -161,6 +158,7 @@ const TodoInputContainer = styled.section`
 `;
 
 const ProgressContainer = styled.article`
+  display: ${(props) => (props.popupVisible ? "flex" : "none")};
   flex-direction: row-reverse;
   align-items: center;
   justify-content: space-between;
@@ -195,6 +193,7 @@ const ProgressContainer = styled.article`
 `;
 
 const TodoForm = styled.form`
+  display: ${(props) => (props.popupVisible ? "none" : "flex")};
   flex-direction: row-reverse;
   margin: 0 0.625em;
   width: 85%;
