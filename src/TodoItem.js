@@ -55,9 +55,7 @@ const TodoItem = ({ onEdit, onDelete, moveItem, value, id, isDone }) => {
         {isEdit ? (
           <>
             <EditingBtn
-              onClick={(e) => {
-                handleQuitEdit(e);
-              }}
+              onClick={handleQuitEdit}
             >
               수정 취소
             </EditingBtn>
