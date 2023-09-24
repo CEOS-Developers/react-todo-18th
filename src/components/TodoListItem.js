@@ -31,6 +31,10 @@ const ListItem = styled.div`
   font-family: "SUITE-Regular";
   font-size: 0.75em;
   cursor: pointer;
+
+  &:hover {
+    color: #4caf50;
+  }
 `;
 
 const TodoText = styled.span`
@@ -59,4 +63,10 @@ const TodoDel = styled.img`
   border-radius: 0.3125em;
   background-color: transparent;
   cursor: pointer;
+
+  opacity: 0;
+  transition: opacity 0.3s;
+  ${ListItem}:hover & {
+    opacity: 1;
+  }
 `;
