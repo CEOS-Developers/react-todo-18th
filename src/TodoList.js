@@ -92,9 +92,7 @@ export default TodoList;
 //CSS
 const Container = styled.div`
   background-color: rgba(255, 255, 255, 0.2);
-  padding: 100px;
-  padding-top: 10px;
-  padding-bottom: 140px;
+  padding: 10px 100px 140px 100px;
   margin-top: 0px;
   display: flex;
   flex-direction: column;
