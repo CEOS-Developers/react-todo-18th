@@ -38,7 +38,11 @@ function App() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleAddTodo();
+    if (newTodo.length >= 80) {
+      alert("80자 이하로 입력해주세요");
+    } else {
+      handleAddTodo();
+    }
   };
   return (
     <div className="wrapper">

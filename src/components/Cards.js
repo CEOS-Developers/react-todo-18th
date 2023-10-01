@@ -20,19 +20,13 @@ const TodoCard = styled.div`
 const TodoElem = styled.div`
   margin-left: 30px;
   text-decoration: ${(props) => (props.checked ? "line-through" : "none")};
+  max-width: 350px;
+  word-wrap: break-word;
 `;
 function Cards({ todo, setTodo }) {
   //checked card 구분
   const unCheckedTodo = todo.filter((element) => !element.checked);
   const checkedTodo = todo.filter((element) => element.checked);
-
-  // const [cardColor, setCardColor] = useState([
-  //   "#ECECEC",
-  //   "#A6DDF5",
-  //   "#F5AEAE",
-  //   "#87DDCE",
-  //   "#F5EDB6",
-  // ]);
 
   //todo state 에서 삭제
   const handleOnClick = (element) => {
