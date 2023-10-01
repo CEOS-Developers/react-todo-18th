@@ -49,7 +49,10 @@ function App() {
       <header className="header">
         <div className="logo">TODO-list</div>
         <div className="detail">
-          <div>투두리스트를 작성하고 오늘 하루를 기록해요</div>
+          <div>
+            투두리스트를 작성하고
+            <br /> 오늘 하루를 기록해요
+          </div>
           <Clock />
         </div>
       </header>
